@@ -18,6 +18,7 @@
     <string name="search">搜索</string>
     <string name="system_notification">系统通知</string>
     <string name="logout">退出登录</string>
+    <string name="settings">设置</string>
     <string name="network_retry">网络错误，请点击此处重试</string>
 
     <string name="name_male">%s先生</string>
@@ -38,6 +39,7 @@
 
     <string name="confirm_logout_title">退出登录</string>
     <string name="confirm_logout_instruction">退出后，您需要再次提供您的工号和密码才能继续使用。</string>
+    <string name="confirm_select_role_instruction">更换角色后，您将以全新的身份使用本系统，当前角色特有的权限将无法继续使用。继续吗？</string>
 
     <string name="login_userid_title">欢迎使用</string>
     <string name="login_userid_input_hint">请输入您的工号</string>
@@ -103,7 +105,7 @@
     <string name="view_role_examine_state_group">申请组织：%s</string>
     <string name="view_role_examine_state_role">申请角色：%s</string>
     <string name="view_role_examine_state_cancel_confirm_title">取消申请</string>
-    <string name="view_role_examine_state_cancel_confirm_message">此后若想使用此角色，您需要重新发出申请</string>
+    <string name="view_role_examine_state_cancel_confirm_message">此后若想使用此角色，您需要重新发出申请。</string>
     <string name="view_role_examine_state_cancel_success">申请已取消</string>
     <string name="view_role_examine_state_delete_confirm_title">删除申请</string>
     <string name="view_role_examine_state_delete_confirm_message">此申请将被永久删除</string>
@@ -114,4 +116,7 @@
     <string name="home_myself">我的</string>
     <string name="home_my_functions">我的功能</string>
     <string name="home_on_going">进行中</string>
+
+    <string name="self_select_role">切换角色</string>
+    <string name="self_change_password">修改密码</string>
 </resources>

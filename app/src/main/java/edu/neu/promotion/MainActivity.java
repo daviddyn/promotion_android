@@ -1,5 +1,6 @@
 package edu.neu.promotion;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
@@ -80,6 +81,12 @@ public class MainActivity extends PageSwitchingActivity {
             setResult(RESULT_NEED_FINISH);
             finish();
             return;
+        }
+        if (who instanceof SelfPage) {
+            Intent intent = new Intent();
+            intent.putExtra("selectRole", true);
+            setResult(RESULT_NEED_FINISH, intent);
+            finish();
         }
     }
 

@@ -44,7 +44,7 @@
                 <TextView
                     android:id="@+id/nameCardView"
                     android:layout_alignParentEnd="true"
-                    android:background="@drawable/button_primary"
+                    android:background="@drawable/button_primary_press"
                     android:gravity="center"
                     android:textColor="@color/text_button_primary"
                     android:textSize="14sp"
@@ -82,7 +82,8 @@
         <!-- 个人菜单项 -->
 
         <TextView
-            android:text="切换角色"
+            android:id="@+id/selectRoleButton"
+            android:text="@string/self_select_role"
             android:layout_marginTop="@dimen/menu_item_margin"
             android:padding="@dimen/menu_item_padding"
             android:background="@drawable/menu_background"
@@ -95,7 +96,8 @@
             app:drawableEndCompat="@drawable/ic_choose" />
 
         <TextView
-            android:text="修改密码"
+            android:id="@+id/changePasswordButton"
+            android:text="@string/self_change_password"
             android:layout_marginTop="1px"
             android:padding="@dimen/menu_item_padding"
             android:background="@drawable/menu_background"
@@ -108,7 +110,8 @@
             app:drawableEndCompat="@drawable/ic_choose" />
 
         <TextView
-            android:text="设置"
+            android:id="@+id/settingsButton"
+            android:text="@string/settings"
             android:layout_marginTop="@dimen/menu_item_margin"
             android:padding="@dimen/menu_item_padding"
             android:background="@drawable/menu_background"
@@ -135,7 +138,7 @@
             android:paddingTop="@dimen/button_padding_vertical"
             android:paddingBottom="@dimen/button_padding_vertical"
             android:background="@drawable/button_critical"
-            android:text="退出登录"
+            android:text="@string/logout"
             android:textSize="@dimen/button_text_size"
             android:textColor="@color/on_primary"
             android:gravity="center" />
