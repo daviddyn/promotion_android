@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/tool_icon_dimen"
+    android:height="@dimen/tool_icon_dimen"
+    android:viewportWidth="18"
+    android:viewportHeight="18">
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:fillColor="@color/text_primary"
+        android:pathData="M4,5l3,0l0,3l-3,0Z"/>
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M7,8c0,4.031-3,5-3,5"/>
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:fillColor="@color/text_primary"
+        android:pathData="M11,5l3,0l0,3l-3,0Z"/>
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M14,8c0,4.031-3,5-3,5"/>
+
+</vector>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FixedGridLayout">
+        <attr name="gridHeight" format="dimension" />
+        <attr name="columnCount" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="FixedGridLayout_Layout">
+        <attr name="layout_columnSpan" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="PageTabBarView">
+        <attr name="color" format="color" />
+    </declare-styleable>
+
+</resources>

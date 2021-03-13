@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/actionbar_button"
+    android:height="@dimen/actionbar_button"
+    android:viewportWidth="13"
+    android:viewportHeight="13">
+
+    <path
+        android:strokeColor="@color/text_primary"
+        android:strokeWidth="1"
+        android:pathData="
+        M1,5
+        a4,4,0,0,180,8,0
+        a4,4,0,0,180,-8,0
+        M8,8
+        l4,4"/>
+
+    <path
+        android:strokeColor="@color/text_primary"
+        android:strokeWidth="1.3"
+        android:pathData="M8,8l4,4"/>
+
+</vector>

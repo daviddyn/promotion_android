@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="256dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1.0"
+            android:layout_height="36dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp" >
+
+                <TextView
+                    android:id="@+id/textButton"
+                    android:text="文字"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center"
+                    android:layout_weight="1.0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/foramtButton"
+                    android:text="格式"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center"
+                    android:layout_weight="1.0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/insertButton"
+                    android:text="插入"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:gravity="center"
+                    android:layout_weight="1.0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <edu.neu.promotion.views.PageTabBarView
+                app:color="@color/primary"
+                android:layout_width="match_parent"
+                android:layout_height="2dp" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/closeButton"
+            android:scaleType="center"
+            android:src="@drawable/ic_tip_label_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp" />
+
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_weight="1.0"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+</LinearLayout>

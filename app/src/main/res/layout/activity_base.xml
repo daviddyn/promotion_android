@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 标题栏 -->
+    <RelativeLayout
+        android:id="@+id/actionbarArea"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:background="@drawable/ripple_round"
+            android:src="@drawable/ic_actionbar_back"
+            android:scaleType="center"
+            android:layout_width="@dimen/actionbar_height"
+            android:layout_height="@dimen/actionbar_height" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/actionbarButtonArea"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/actionbar_height" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/actionbarSplitter"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/split_bar" />
+
+    <!-- 提示条 -->
+    <LinearLayout
+        android:id="@+id/tipLabelArea"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- 内容 -->
+    <FrameLayout
+        android:id="@+id/contentViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" />
+
+</LinearLayout>

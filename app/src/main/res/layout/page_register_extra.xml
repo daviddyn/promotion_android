@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/register_extra_title"
+            android:layout_marginTop="@dimen/navigate_title_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/register_extra_subtitle"
+            android:layout_marginTop="@dimen/navigate_subtitle_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_subtitle_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:visibility="invisible"
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_extra_department_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/departmentEdit"
+            android:hint="@string/register_extra_department_input_hint"
+            android:textColorHint="@color/split_bar"
+            android:padding="@dimen/input_padding_outer"
+            android:textSize="@dimen/input_text_size"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_extra_student_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/studentRadioGroup"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/studentRadio"
+                android:text="@string/register_extra_student_yes"
+                android:textSize="@dimen/input_text_size"
+                android:textColor="@color/text_secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/teacherRadio"
+                android:text="@string/register_extra_student_no"
+                android:checked="true"
+                android:textSize="@dimen/input_text_size"
+                android:textColor="@color/text_secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/positionTitleView"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_extra_position_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <edu.neu.promotion.views.ClearableEditText
+            android:id="@+id/positionEdit"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="@string/register_extra_position_input_hint"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="18"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/split_bar"
+                android:textSize="@dimen/input_text_size"
+                android:padding="@dimen/input_padding_inner"
+                android:textCursorDrawable="@drawable/input_cursor"
+                android:background="@drawable/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </edu.neu.promotion.views.ClearableEditText>
+
+        <LinearLayout
+            android:id="@+id/degreeTitleView"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_extra_degree_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/degreeEdit"
+            android:visibility="gone"
+            android:text="@string/degree_undergraduate"
+            android:padding="@dimen/input_padding_outer"
+            android:textSize="@dimen/input_text_size"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <TextView
+            android:id="@+id/nextButton"
+            android:enabled="false"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginBottom="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/button_padding_horizontal"
+            android:paddingRight="@dimen/button_padding_horizontal"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:background="@drawable/button_primary"
+            android:text="@string/next"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/on_primary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

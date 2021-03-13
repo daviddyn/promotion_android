@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">招生宣传</string>
+    <string name="app_name_long">东北大学招生宣传综合管理系统</string>
+    <string name="app_version_name">版本号：%s</string>
+
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="resume">继续</string>
+    <string name="back">返回</string>
+    <string name="next">下一步</string>
+    <string name="finish">完成</string>
+    <string name="begin_use">开始使用</string>
+    <string name="loading">加载中…</string>
+    <string name="male">先生</string>
+    <string name="female">女士</string>
+    <string name="search">搜索</string>
+    <string name="system_notification">系统通知</string>
+    <string name="logout">退出登录</string>
+    <string name="network_retry">网络错误，请点击此处重试</string>
+
+    <string name="name_male">%s先生</string>
+    <string name="name_female">%s女士</string>
+
+    <string name="degree_undergraduate">本科</string>
+    <string name="degree_graduate">硕士</string>
+    <string name="degree_postgraduate">博士</string>
+
+    <string name="toast_network_error">无法连接至服务器，请稍后再试</string>
+    <string name="toast_identify_number_error">请输入正确的身份证号码</string>
+    <string name="toast_register_success">注册成功，请尝试重新登录</string>
+    <string name="toast_login_expired">登录已失效，请尝试重新登录</string>
+
+    <string name="search_empty">无搜索结果</string>
+
+    <string name="tip_label_network_error">网络连接发生问题，请检查你的网络设置</string>
+
+    <string name="confirm_logout_title">退出登录</string>
+    <string name="confirm_logout_instruction">退出后，您需要再次提供您的工号和密码才能继续使用。</string>
+
+    <string name="login_userid_title">欢迎使用</string>
+    <string name="login_userid_input_hint">请输入您的工号</string>
+    <string name="login_password_title">请输入密码</string>
+    <string name="login_password_subtitle">工号：%s</string>
+    <string name="login_password_input_hint">请输入密码</string>
+
+    <string name="register_confirm_title">确认注册</string>
+    <string name="register_confirm_content">即将使用工号 %s 进行注册。</string>
+    <string name="register_password_title">请设置密码</string>
+    <string name="register_password_subtitle">登录密码将用于系统手机端和系统网页端的登录</string>
+    <string name="register_password_first">密码</string>
+    <string name="register_password_again">请再输入一次密码</string>
+    <string name="register_password_requirement">可以少于8个字符，可以全是字母或数字</string>
+    <string name="register_password_not_match">两次密码输入不一致</string>
+    <string name="register_basic_title">请设置基本信息</string>
+    <string name="register_basic_subtitle">设置您的基本信息，以便完成注册</string>
+    <string name="register_basic_name_title">您的姓名</string>
+    <string name="register_basic_name_input_hint">请填写真实姓名</string>
+    <string name="register_basic_identify_title">您的证件（选填）</string>
+    <string name="register_basic_identify_input_hint">请填写您的身份证号码</string>
+    <string name="register_basic_phone_title">您的联系方式</string>
+    <string name="register_basic_phone_input_hint">请填写您当前可用的手机号</string>
+    <string name="register_extra_title">欢迎使用招生宣传管理系统</string>
+    <string name="register_extra_subtitle">接下来，让我们完善信息，以便向您提供完整的服务</string>
+    <string name="register_extra_department_title">请问您的学院（部门）是？（选填）</string>
+    <string name="register_extra_department_input_hint">请选择您所在的学院或部门</string>
+    <string name="register_extra_select_department_title">选择学院或部门</string>
+    <string name="register_extra_student_title">您是否是学生？</string>
+    <string name="register_extra_student_yes">是，我是学生</string>
+    <string name="register_extra_student_no">否，我是教职工</string>
+    <string name="register_extra_position_title">请问您的职称（职务）是？</string>
+    <string name="register_extra_position_input_hint">请填写您当前的职称或职务</string>
+    <string name="register_extra_degree_title">请问您的学历层次是？</string>
+    <string name="register_verify_title">请输入验证码</string>
+    <string name="register_verify_change">更换验证码</string>
+
+    <string name="select_role_title">欢迎您，%s！</string>
+    <string name="select_role_subtitle_normal">选择一个角色以继续</string>
+    <string name="select_role_subtitle_no_role">您还没有任何角色，请点击下方按钮申请</string>
+    <string name="select_role_subtitle_no_available">您申请的角色正在审核，请耐心等待吧~</string>
+    <string name="select_role_recent">上一次使用的</string>
+    <string name="select_role_available">可用角色</string>
+    <string name="select_role_unavailable">审核中</string>
+    <string name="select_role_denied">审核不通过</string>
+    <string name="select_role_add">其他角色</string>
+    <string name="select_role_apply">申请新角色</string>
+
+    <string name="create_role_title">申请新角色</string>
+    <string name="create_role_subtitle">要申请哪一种角色？</string>
+    <string name="create_role_available">可申请角色</string>
+    <string name="create_role_success">角色申请成功</string>
+    <string name="create_group_title">选择招生组</string>
+    <string name="create_group_subtitle">要申请哪个招生组的%s？</string>
+    <string name="create_group_available">所在招生组</string>
+    <string name="create_group_hint">请选择招生组</string>
+    <string name="create_group_ok">发起申请</string>
+
+    <string name="view_role_examine_state_title">查看审核进度</string>
+    <string name="view_role_examine_state_progress">审核进度</string>
+    <string name="view_role_examine_state_cancel">取消申请</string>
+    <string name="view_role_examine_state_delete">删除申请记录</string>
+    <string name="view_role_examine_state_group">申请组织：%s</string>
+    <string name="view_role_examine_state_role">申请角色：%s</string>
+    <string name="view_role_examine_state_cancel_confirm_title">取消申请</string>
+    <string name="view_role_examine_state_cancel_confirm_message">此后若想使用此角色，您需要重新发出申请</string>
+    <string name="view_role_examine_state_cancel_success">申请已取消</string>
+    <string name="view_role_examine_state_delete_confirm_title">删除申请</string>
+    <string name="view_role_examine_state_delete_confirm_message">此申请将被永久删除</string>
+    <string name="view_role_examine_state_delete_success">申请已删除</string>
+
+    <string name="home_my_functions">我的功能</string>
+</resources>

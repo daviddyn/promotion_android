@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:orientation="vertical"
+        android:paddingBottom="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_marginTop="@dimen/navigate_title_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/subtitleTextView"
+            android:layout_marginTop="@dimen/navigate_subtitle_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_subtitle_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/recentTitleView"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:text="@string/select_role_recent"
+            android:textColor="@color/primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/recentListView"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/availableTitleView"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:text="@string/select_role_available"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/availableListView"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/unavailableTitleView"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:text="@string/select_role_unavailable"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/unavailableListView"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/newTitleView"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:text="@string/select_role_add"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/newListView"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</ScrollView>

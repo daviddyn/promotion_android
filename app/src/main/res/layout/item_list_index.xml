@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/card"
+    android:textColor="@color/text_secondary"
+    android:textSize="@dimen/navigate_reminder_text_size"
+    android:gravity="bottom"
+    android:paddingLeft="@dimen/card_padding"
+    android:paddingRight="@dimen/card_padding"
+    android:paddingBottom="@dimen/navigate_content_elem_margin"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_index_item_height" />

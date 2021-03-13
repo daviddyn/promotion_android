@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="0dp"
+    android:textCursorDrawable="@drawable/input_cursor"
+    android:background="@drawable/input"
+    android:textColor="@color/text_primary"
+    android:textSize="42sp"
+    android:gravity="center"
+    android:singleLine="true"
+    android:maxLines="1"
+    android:maxEms="1"
+    android:minEms="1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />

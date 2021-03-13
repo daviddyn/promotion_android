@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- 正常界面 -->
+    <edu.neu.promotion.views.IndexedListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 搜索界面 -->
+    <LinearLayout
+        android:id="@+id/searchView"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <edu.neu.promotion.views.ClearableEditText
+            android:id="@+id/searchEdit"
+            android:layout_margin="12dp"
+            android:background="@drawable/input_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:singleLine="true"
+                android:hint="@string/search"
+                android:textColorHint="@color/text_hint"
+                android:maxLines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="16sp"
+                android:background="@null"
+                android:padding="@dimen/input_padding_inner"
+                android:textCursorDrawable="@drawable/input_cursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:background="@drawable/ic_input_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </edu.neu.promotion.views.ClearableEditText>
+
+        <ListView
+            android:id="@+id/searchListView"
+            android:divider="@null"
+            android:dividerHeight="0px"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0" />
+
+        <TextView
+            android:id="@+id/searchResultTip"
+            android:visibility="gone"
+            android:text="@string/search_empty"
+            android:textColor="@color/text_tertiary"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:paddingTop="72dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0" />
+
+    </LinearLayout>
+
+</FrameLayout>

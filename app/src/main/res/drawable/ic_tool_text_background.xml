@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/tool_icon_dimen"
+    android:height="@dimen/tool_icon_dimen"
+    android:viewportWidth="18"
+    android:viewportHeight="18">
+
+    <path
+        android:strokeWidth="0.3"
+        android:strokeColor="@color/text_primary"
+        android:pathData="
+        M1,0l-18,18
+        M3,0l-18,18
+        M5,0l-18,18
+        M7,0l-18,18
+        M9,0l-18,18
+        M11,0l-18,18
+        M13,0l-18,18
+        M15,0l-18,18
+        M17,0l-18,18
+        M19,0l-18,18
+        M21,0l-18,18
+        M23,0l-18,18
+        M25,0l-18,18
+        M27,0l-18,18
+        M29,0l-18,18
+        M31,0l-18,18
+        M33,0l-18,18
+        M35,0l-18,18
+"/>
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M5.5,13L9,5L12.5,13M11.63,11L6.38,11"/>
+</vector>

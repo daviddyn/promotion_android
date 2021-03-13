@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/items_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 个人资料卡 -->
+        <LinearLayout
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:background="@color/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nameView"
+                    android:layout_toStartOf="@+id/nameCardView"
+                    android:textColor="@color/text_primary"
+                    android:textSize="24sp"
+                    android:text="丁奕宁"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/idView"
+                    android:layout_below="@+id/nameView"
+                    android:layout_toStartOf="@+id/nameCardView"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"
+                    android:textSize="14sp"
+                    android:text="1901698"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/nameCardView"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/button_primary_normal_background"
+                    android:gravity="center"
+                    android:textColor="@color/on_primary"
+                    android:textSize="14sp"
+                    android:text="奕宁"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_role_admin"
+                    android:layout_width="18sp"
+                    android:layout_height="18sp"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_marginStart="4dp"
+                    android:textColor="@color/primary"
+                    android:textSize="14sp"
+                    android:text="吉林组 - 招生组组长"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 个人菜单项 -->
+
+        <TextView
+            android:text="切换角色"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:background="@drawable/menu_background"
+            android:textSize="@dimen/menu_item_text_size"
+            android:textColor="@color/text_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/menu_item_padding"
+            app:drawableStartCompat="@drawable/ic_menu_select_role"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <TextView
+            android:text="修改密码"
+            android:layout_marginTop="1px"
+            android:padding="@dimen/menu_item_padding"
+            android:background="@drawable/menu_background"
+            android:textSize="@dimen/menu_item_text_size"
+            android:textColor="@color/text_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/menu_item_padding"
+            app:drawableStartCompat="@drawable/ic_menu_change_password"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <TextView
+            android:text="设置"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:background="@drawable/menu_background"
+            android:textSize="@dimen/menu_item_text_size"
+            android:textColor="@color/text_primary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/menu_item_padding"
+            app:drawableStartCompat="@drawable/ic_menu_settings"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <!-- 退出登录 -->
+
+        <TextView
+            android:id="@+id/logoutButton"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginBottom="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/button_padding_horizontal"
+            android:paddingRight="@dimen/button_padding_horizontal"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:background="@drawable/button_critical"
+            android:text="退出登录"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/on_primary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

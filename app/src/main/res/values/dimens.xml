@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="actionbar_height">48dp</dimen>
+    <dimen name="page_padding">32dp</dimen>
+
+    <!-- 卡片 -->
+    <dimen name="card_radius">10dp</dimen>
+    <dimen name="card_padding">24dp</dimen>
+
+    <!-- 按钮 -->
+    <dimen name="button_radius">8dp</dimen>
+    <dimen name="button_padding_horizontal">32dp</dimen>
+    <dimen name="button_padding_vertical">12dp</dimen>
+    <dimen name="button_text_size">18sp</dimen>
+
+    <!-- 输入框 -->
+    <dimen name="input_padding_outer">8dp</dimen>
+    <dimen name="input_padding_inner">4dp</dimen>
+    <dimen name="input_text_size">18sp</dimen>
+
+    <!-- 导航页 -->
+    <dimen name="navigate_title_margin">24dp</dimen>
+    <dimen name="navigate_title_text_size">24sp</dimen>
+    <dimen name="navigate_subtitle_margin">8dp</dimen>
+    <dimen name="navigate_subtitle_text_size">14sp</dimen>
+    <dimen name="navigate_reminder_text_size">14sp</dimen>
+    <dimen name="navigate_content_margin">38dp</dimen>
+    <dimen name="navigate_content_elem_margin">8dp</dimen>
+    <dimen name="navigate_button_margin">18dp</dimen>
+
+    <!-- 审核 -->
+    <dimen name="examine_icon_dimen">12dp</dimen>
+    <dimen name="examine_icon_margin">18dp</dimen>
+
+    <dimen name="list_index_item_height">42dp</dimen>
+    <dimen name="actionbar_button">24dp</dimen>
+
+    <dimen name="menu_icon_dimen">20dp</dimen>
+    <dimen name="menu_item_padding">16dp</dimen>
+    <dimen name="menu_icon_padding">12dp</dimen>
+    <dimen name="menu_item_margin">10dp</dimen>
+    <dimen name="menu_item_text_size">17sp</dimen>
+    <dimen name="function_icon_dimen">58dp</dimen>
+    <dimen name="function_text_size">12sp</dimen>
+
+    <!-- 工具栏 -->
+    <dimen name="tool_icon_dimen">18dp</dimen>
+    <dimen name="tool_item_height">64dp</dimen>
+    <dimen name="tool_item_margin">8dp</dimen>
+    <dimen name="tool_item_translate_z">2dp</dimen>
+
+</resources>

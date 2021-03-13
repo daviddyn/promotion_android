@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:translationZ="3dp"
+            android:layout_margin="@dimen/page_padding"
+            android:padding="24dp"
+            android:background="@drawable/primary_card_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/examineStateView"
+                android:layout_alignParentEnd="true"
+                android:textSize="14sp"
+                android:textColor="@color/text_tertiary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/roleIconView"
+                android:scaleType="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:tint="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/groupNameText"
+                android:layout_below="@+id/roleIconView"
+                android:layout_marginTop="24dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/roleNameText"
+                android:layout_below="@+id/groupNameText"
+                android:layout_marginTop="4dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:text="@string/view_role_examine_state_progress"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:background="@color/split_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_inprogress"
+                android:text="进度6"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/text_tertiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/examine_time_line"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/examine_icon_dimen"
+                android:layout_height="@dimen/examine_icon_margin"
+                app:tint="@color/gray" />
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_denied"
+                android:text="进度5"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/critical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/examine_time_line"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/examine_icon_dimen"
+                android:layout_height="@dimen/examine_icon_margin"
+                app:tint="@color/critical" />
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_passed"
+                android:text="进度4"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/positive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/examine_time_line"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/examine_icon_dimen"
+                android:layout_height="@dimen/examine_icon_margin"
+                app:tint="@color/positive" />
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_passed"
+                android:text="进度3"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/positive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/examine_time_line"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/examine_icon_dimen"
+                android:layout_height="@dimen/examine_icon_margin"
+                app:tint="@color/positive" />
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_passed"
+                android:text="进度2"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/positive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:src="@drawable/examine_time_line"
+                android:scaleType="centerCrop"
+                android:layout_width="@dimen/examine_icon_dimen"
+                android:layout_height="@dimen/examine_icon_margin"
+                app:tint="@color/positive" />
+
+            <TextView
+                android:drawableStart="@drawable/ic_examine_passed"
+                android:text="进度1"
+                android:textSize="18sp"
+                android:drawablePadding="12dp"
+                android:textColor="@color/positive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:background="@color/split_bar"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+        <TextView
+            android:id="@+id/cancelButton"
+            android:layout_marginTop="@dimen/navigate_button_margin"
+            android:layout_marginBottom="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/button_padding_horizontal"
+            android:paddingRight="@dimen/button_padding_horizontal"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:background="@drawable/button_critical"
+            android:text="@string/view_role_examine_state_cancel"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/on_primary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

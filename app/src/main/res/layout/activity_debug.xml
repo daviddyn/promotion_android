@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <edu.neu.promotion.views.PasswordEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:inputType="textPassword"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/input_text_size"
+            android:padding="@dimen/input_padding_inner"
+            android:textCursorDrawable="@drawable/input_cursor"
+            android:background="@drawable/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:inputType="textVisiblePassword"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/input_text_size"
+            android:padding="@dimen/input_padding_inner"
+            android:textCursorDrawable="@drawable/input_cursor"
+            android:background="@drawable/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:background="@drawable/ic_input_visible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </edu.neu.promotion.views.PasswordEditText>
+
+
+</LinearLayout>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="@string/register_basic_title"
+            android:layout_marginTop="@dimen/navigate_title_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="@string/register_basic_subtitle"
+            android:layout_marginTop="@dimen/navigate_subtitle_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_subtitle_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_basic_name_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <edu.neu.promotion.views.ClearableEditText
+            android:id="@+id/nameEdit"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="@string/register_basic_name_input_hint"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/split_bar"
+                android:textSize="@dimen/input_text_size"
+                android:padding="@dimen/input_padding_inner"
+                android:textCursorDrawable="@drawable/input_cursor"
+                android:background="@drawable/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </edu.neu.promotion.views.ClearableEditText>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/maleButton"
+                android:text="@string/male"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:textColor="@color/on_primary"
+                android:background="@drawable/button_primary_normal_background"
+                android:paddingLeft="28dp"
+                android:paddingRight="28dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/femaleButton"
+                android:text="@string/female"
+                android:layout_marginStart="8dp"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:textColor="@color/female"
+                android:background="@drawable/check_button_female_unchecked"
+                android:paddingLeft="28dp"
+                android:paddingRight="28dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:visibility="invisible"
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="@string/register_basic_identify_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <edu.neu.promotion.views.ClearableEditText
+            android:id="@+id/identifyEdit"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:hint="@string/register_basic_identify_input_hint"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:maxLength="18"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/split_bar"
+                android:textSize="@dimen/input_text_size"
+                android:padding="@dimen/input_padding_inner"
+                android:textCursorDrawable="@drawable/input_cursor"
+                android:background="@drawable/input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </edu.neu.promotion.views.ClearableEditText>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:text="* "
+                android:textColor="@color/critical"
+                android:textSize="@dimen/navigate_reminder_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="@string/register_basic_phone_title"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_reminder_text_size" />
+
+        </LinearLayout>
+
+        <edu.neu.promotion.views.ClearableEditText
+            android:id="@+id/phoneEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginRight="24dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:hint="@string/register_basic_phone_input_hint"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:padding="@dimen/input_padding_inner"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/split_bar"
+                android:textCursorDrawable="@drawable/input_cursor"
+                android:textSize="@dimen/input_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </edu.neu.promotion.views.ClearableEditText>
+
+        <TextView
+            android:id="@+id/nextButton"
+            android:enabled="false"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginBottom="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/button_padding_horizontal"
+            android:paddingRight="@dimen/button_padding_horizontal"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:background="@drawable/button_primary"
+            android:text="@string/next"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/on_primary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

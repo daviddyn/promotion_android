@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/tool_icon_dimen"
+    android:height="@dimen/tool_icon_dimen"
+    android:viewportWidth="18"
+    android:viewportHeight="18">
+
+    <path
+        android:strokeWidth="1"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M7,4L15,4M7,9L15,9M7,14L15,14"/>
+
+    <path
+        android:fillColor="@color/text_primary"
+        android:pathData="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276,0.138A0.5,0.5,0,0,1,2.053,3c-0.124-0.247-0.023-0.324,0.224-0.447l1-0.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z"/>
+
+    <path
+        android:strokeWidth="0.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M4.5,10.5h-2c0-0.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156"/>
+
+    <path
+        android:strokeWidth="0.8"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:strokeColor="@color/text_primary"
+        android:pathData="M2.5,14.846a0.959,0.959,0,0,0,1.85-0.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,0.6-0.736,0.959,0.959,0,0,0-1.85-0.109"/>
+</vector>
