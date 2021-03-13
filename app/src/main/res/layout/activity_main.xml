@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_weight="1.0"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <View
+        android:background="@color/split_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
+    <LinearLayout
+        android:background="@color/items_background"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="76dp">
+
+        <LinearLayout
+            android:id="@+id/newsButton"
+            android:padding="16dp"
+            android:background="@drawable/ripple"
+            android:orientation="vertical"
+            android:layout_weight="1.0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/newsButtonImage"
+                android:src="@drawable/ic_bottom_news"
+                android:scaleType="center"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/newsButtonText"
+                android:text="@string/home_news"
+                android:gravity="center"
+                android:textSize="10.5sp"
+                android:textColor="@color/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/homeButton"
+            android:padding="16dp"
+            android:background="@drawable/ripple"
+            android:orientation="vertical"
+            android:layout_weight="1.0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/homeButtonImage"
+                android:src="@drawable/ic_bottom_apps"
+                android:scaleType="center"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/homeButtonText"
+                android:text="@string/home_home_page"
+                android:gravity="center"
+                android:textSize="10.5sp"
+                android:textColor="@color/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selfButton"
+            android:padding="16dp"
+            android:background="@drawable/ripple"
+            android:orientation="vertical"
+            android:layout_weight="1.0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/selfButtonImage"
+                android:src="@drawable/ic_bottom_self"
+                android:scaleType="center"
+                android:layout_weight="1.0"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/selfButtonText"
+                android:text="@string/home_myself"
+                android:gravity="center"
+                android:textSize="10.5sp"
+                android:textColor="@color/text_primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    
+</LinearLayout>

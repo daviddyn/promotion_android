@@ -17,7 +17,7 @@ public final class StorageManager {
     public static final String TOKEN = "token";
     public static final String TOKEN_TYPE = "token_type";
     public static final String USER_INFO = "userInfo";
-    public static final String LAST_USE_ADMIN_ROLE_GROUP_ID = "lastUseAdminRoleGroupId";
+    public static final String ROLE_INFO = "roleInfo";
 
     private static File buildFile(Context context, String name) {
         return new File(context.getFilesDir().getAbsoluteFile() + File.separator + name);

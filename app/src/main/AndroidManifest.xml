@@ -29,6 +29,7 @@
         <activity android:name=".CreateRoleActivity" />
         <activity android:name=".SearchSelectItemActivity" />
         <activity android:name=".WebActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

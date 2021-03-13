@@ -109,5 +109,9 @@
     <string name="view_role_examine_state_delete_confirm_message">此申请将被永久删除</string>
     <string name="view_role_examine_state_delete_success">申请已删除</string>
 
+    <string name="home_news">新闻动态</string>
+    <string name="home_home_page">主页</string>
+    <string name="home_myself">我的</string>
     <string name="home_my_functions">我的功能</string>
+    <string name="home_on_going">进行中</string>
 </resources>

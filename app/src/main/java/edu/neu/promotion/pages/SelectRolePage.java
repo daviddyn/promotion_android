@@ -31,15 +31,18 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
     private static final int ACTIVITY_REQUEST_ADD_ROLE = 2;
 
     private static final int TASK_LIST_USER_ROLES = 1;
+    private static final int TASK_ACCESS_ROLE = 2;
+
+    private final AdminNode adminInfo;
+    private final AdminRoleNode lastUseRole;
 
     private AdminRoleNode[] roles;
 
+    private AlertDialog loadingDialog;
+    private DialogInterface.OnCancelListener onLoadingDialogCancelListener;
     private View.OnClickListener onRoleButtonClickListener;
     private PopupMenu.OnMenuItemClickListener onActionbarMenuItemClickListener;
     private DialogInterface.OnClickListener onLogoutConfirmListener;
-
-    private final AdminNode adminInfo;
-    private final String lastUseAdminRoleGroupId;
 
     private TextView subtitleTextView;
     private View recentTitleView;
@@ -53,10 +56,12 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
 
     private View selectedRoleItemView;
 
+    private AdminRoleNode selectedRole;
+
     public SelectRolePage(PageManager pageManager, Object... args) {
         super(pageManager, args);
         adminInfo = JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.USER_INFO), AdminNode.class);
-        lastUseAdminRoleGroupId = StorageManager.getValue(getContext(), StorageManager.LAST_USE_ADMIN_ROLE_GROUP_ID);
+        lastUseRole = JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.ROLE_INFO), AdminRoleNode.class);
     }
 
     @Override
@@ -65,6 +70,7 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
         setActionbarStyle(BaseActivity.ACTIONBAR_STYLE_NO_BACK);
         addActionbarButton(getDrawable(R.drawable.ic_actionbar_menu), null);
 
+        onLoadingDialogCancelListener = dialog -> cancelTask(TASK_ACCESS_ROLE);
         onRoleButtonClickListener = this::onRoleButtonClick;
         onActionbarMenuItemClickListener = item -> {
             AlertDialog.Builder.getBottom(getContext())
@@ -124,7 +130,7 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
             for (int i = 0; i < roles.length; i++) {
                 View roleItemView;
                 if ("admin_check_state_5".equals(roles[i].checkState)) {
-                    if (roles[i].adminRoleGroupId.equals(lastUseAdminRoleGroupId)) {
+                    if (lastUseRole != null && roles[i].adminRoleGroupId.equals(lastUseRole.adminRoleGroupId)) {
                         getLayoutInflater().inflate(R.layout.item_role, recentListView);
                         roleItemView = recentListView.getChildAt(recentListView.getChildCount() - 1);
                     }
@@ -216,24 +222,60 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
     @Override
     protected void onTaskBegin(int requestCode) {
         super.onTaskBegin(requestCode);
-        toLoadingState();
+        switch (requestCode) {
+            case TASK_LIST_USER_ROLES:
+                toLoadingState();
+                break;
+            case TASK_ACCESS_ROLE:
+                loadingDialog = AlertDialog.Builder.getCenter(getContext()).setLoading().setOnCancelListener(onLoadingDialogCancelListener).show();
+                break;
+        }
+    }
+
+    @Override
+    protected void onTaskFinish(int requestCode) {
+        super.onTaskFinish(requestCode);
+        switch (requestCode) {
+            case TASK_LIST_USER_ROLES:
+                break;
+            case TASK_ACCESS_ROLE:
+                loadingDialog.cancel();
+                break;
+        }
     }
 
     @Override
     protected void onTaskResult(int requestCode, Object result) {
         super.onTaskResult(requestCode, result);
         ServerResponseNode response = ServerInterfaces.analyseCommonContent((ServerInvoker.InvokeResult) result);
-        if (response.code == ServerInterfaces.RESULT_CODE_SUCCESS) {
-            roles = JsonNode.toObject(response.object, AdminRoleNode[].class);
-            loadMainViews();
+        switch (requestCode) {
+            case TASK_LIST_USER_ROLES:
+                if (response.code == ServerInterfaces.RESULT_CODE_SUCCESS) {
+                    roles = JsonNode.toObject(response.object, AdminRoleNode[].class);
+                    loadMainViews();
+                }
+                toNormalState();
+                break;
+            case TASK_ACCESS_ROLE:
+                StorageManager.setValue(getContext(), StorageManager.TOKEN, response.object.getField("token").getValue());
+                StorageManager.setValue(getContext(), StorageManager.TOKEN_TYPE, "normal");
+                StorageManager.setJson(getContext(), StorageManager.ROLE_INFO, JsonNode.valueOf(selectedRole));
+                notifyParent(0);
+                break;
         }
-        toNormalState();
+
     }
 
     @Override
     protected void onTaskRetryFailed(int requestCode) {
         super.onTaskRetryFailed(requestCode);
-        toErrorState();
+        switch (requestCode) {
+            case TASK_LIST_USER_ROLES:
+                toErrorState();
+                break;
+            case TASK_ACCESS_ROLE:
+                break;
+        }
     }
 
     @Override
@@ -276,7 +318,8 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
     private void onRoleButtonClick(View v) {
         int position = (int) v.getTag();
         if ("admin_check_state_5".equals(roles[position].checkState)) {
-            //TODO: 选择了正确的角色
+            selectedRole = roles[position];
+            runTask(ServerInterfaces.Role.accessRole(getToken(), selectedRole.adminRoleGroupId), TASK_ACCESS_ROLE);
         }
         else {
             selectedRoleItemView = v;

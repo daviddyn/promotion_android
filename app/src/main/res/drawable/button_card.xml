@@ -3,9 +3,9 @@
     android:color="@color/highlight">
 
     <item android:id="@android:id/background"
-        android:drawable="@drawable/button_critical_normal" />
+        android:drawable="@drawable/card" />
 
     <item android:id="@android:id/mask"
-        android:drawable="@drawable/button_ripple_mask" />
+        android:drawable="@drawable/card" />
 
 </ripple>

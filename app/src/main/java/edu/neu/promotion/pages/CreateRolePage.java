@@ -18,7 +18,6 @@ import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.PageManager;
-import edu.neu.promotion.enties.AdminRoleNode;
 import edu.neu.promotion.enties.RoleNode;
 import edu.neu.promotion.enties.ServerResponseNode;
 
@@ -98,13 +97,13 @@ public class CreateRolePage extends TokenRunNetworkTaskPage {
     }
 
     private void setItemSelected(View roleItemView) {
-        roleItemView.setBackground(getDrawable(R.drawable.card_background_selected));
+        roleItemView.setBackground(getDrawable(R.drawable.card_selected));
         ImageViewCompat.setImageTintList(roleItemView.findViewById(R.id.roleIconView), ColorStateList.valueOf(getColor(R.color.primary_lighter)));
         ((TextView) roleItemView.findViewById(R.id.groupNameText)).setTextColor(getColor(R.color.primary));
     }
 
     private void setItemUnselected(View roleItemView) {
-        roleItemView.setBackground(getDrawable(R.drawable.card_background));
+        roleItemView.setBackground(getDrawable(R.drawable.card));
         ImageViewCompat.setImageTintList(roleItemView.findViewById(R.id.roleIconView), ColorStateList.valueOf(getColor(R.color.text_hint)));
         ((TextView) roleItemView.findViewById(R.id.groupNameText)).setTextColor(getColor(R.color.text_tertiary));
     }

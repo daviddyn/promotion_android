@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,7 +19,8 @@
             android:src="@drawable/ic_actionbar_back"
             android:scaleType="center"
             android:layout_width="@dimen/actionbar_height"
-            android:layout_height="@dimen/actionbar_height" />
+            android:layout_height="@dimen/actionbar_height"
+            app:tint="@color/tint_action_bar_button" />
 
         <TextView
             android:id="@+id/titleTextView"

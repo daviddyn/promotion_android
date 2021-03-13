@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.CheckedTextView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,13 +23,11 @@ public class RegisterBasicInfoPage extends Page {
     }
 
     private ClearableEditText nameEdit;
-    private TextView maleButton;
-    private TextView femaleButton;
+    private CheckedTextView maleButton;
+    private CheckedTextView femaleButton;
     private ClearableEditText identifyEdit;
     private ClearableEditText phoneEdit;
     private TextView nextButton;
-
-    private boolean sex;
 
     @Override
     protected void onCreate() {
@@ -50,18 +49,12 @@ public class RegisterBasicInfoPage extends Page {
 
         View.OnClickListener onClickListener = v -> {
             if (v == maleButton) {
-                maleButton.setBackgroundResource(R.drawable.button_primary_normal_background);
-                maleButton.setTextColor(getColor(R.color.on_primary));
-                femaleButton.setBackgroundResource(R.drawable.check_button_female_unchecked);
-                femaleButton.setTextColor(getColor(R.color.female));
-                sex = false;
+                maleButton.setChecked(true);
+                femaleButton.setChecked(false);
             }
             else if (v == femaleButton) {
-                maleButton.setBackgroundResource(R.drawable.check_button_primary_unchecked);
-                maleButton.setTextColor(getColor(R.color.primary));
-                femaleButton.setBackgroundResource(R.drawable.button_female_background);
-                femaleButton.setTextColor(getColor(R.color.on_primary));
-                sex = true;
+                maleButton.setChecked(false);
+                femaleButton.setChecked(true);
             }
             else if (v == nextButton) {
                 onNextStep();
@@ -116,6 +109,6 @@ public class RegisterBasicInfoPage extends Page {
         }
         String userName = nameEdit.getEditText().getText().toString();
         String userPhone = phoneEdit.getEditText().getText().toString();
-        notifyParent(0, userName, sex, userIdentify, userPhone);
+        notifyParent(0, userName, femaleButton.isChecked(), userIdentify, userPhone);
     }
 }

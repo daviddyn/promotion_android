@@ -5,17 +5,16 @@ import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageManager;
 
-public class HomePage extends Page {
+public class NewsPage extends Page {
 
-    public HomePage(PageManager pageManager, Object... args) {
+    public NewsPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
     }
 
     @Override
     protected void onCreate() {
         super.onCreate();
+        setTitle(R.string.home_news);
         setActionbarStyle(BaseActivity.ACTIONBAR_STYLE_NO_BACK);
-        setTitle(R.string.home_home_page);
-        setContentView(R.layout.page_home);
     }
 }

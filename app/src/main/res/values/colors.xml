@@ -30,5 +30,7 @@
     <color name="gray_pressed">#FF808080</color>
 
     <color name="female">#FFFFAEC9</color>
+    <color name="function1">#FFFF9200</color>
+    <color name="function2">#FF00B043</color>
 
 </resources>

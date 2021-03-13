@@ -48,6 +48,8 @@
     <dimen name="tool_icon_dimen">18dp</dimen>
     <dimen name="tool_item_height">64dp</dimen>
     <dimen name="tool_item_margin">8dp</dimen>
-    <dimen name="tool_item_translate_z">2dp</dimen>
+    <dimen name="tool_item_translate_z">1dp</dimen>
+
+    <dimen name="bottom_navigate_icon_dimen">24dp</dimen>
 
 </resources>

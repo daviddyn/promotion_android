@@ -214,6 +214,9 @@ public final class JsonNode {
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public static <T> T toObject(JsonNode jsonNode, Class<T> destClass) {
+        if (jsonNode == null) {
+            return null;
+        }
         if (destClass.equals(JsonNode.class)) {
             return (T) jsonNode;
         }

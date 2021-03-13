@@ -80,7 +80,7 @@
 
         <!-- 窗口背景颜色 -->
         <item name="android:colorBackground">@color/card</item>
-        <item name="android:windowBackground">@drawable/card_background</item>
+        <item name="android:windowBackground">@drawable/card</item>
         <item name="colorSurface">@color/window_background</item>
 
         <!-- 元素颜色 -->

@@ -86,12 +86,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/maleButton"
                 android:text="@string/male"
                 android:textSize="@dimen/navigate_reminder_text_size"
-                android:textColor="@color/on_primary"
-                android:background="@drawable/button_primary_normal_background"
+                android:checked="true"
+                android:textColor="@color/text_button_primary_check"
+                android:background="@drawable/button_primary_check"
                 android:paddingLeft="28dp"
                 android:paddingRight="28dp"
                 android:paddingTop="10dp"
@@ -99,13 +100,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/femaleButton"
                 android:text="@string/female"
                 android:layout_marginStart="8dp"
                 android:textSize="@dimen/navigate_reminder_text_size"
-                android:textColor="@color/female"
-                android:background="@drawable/check_button_female_unchecked"
+                android:textColor="@color/text_button_female_check"
+                android:background="@drawable/button_female_check"
                 android:paddingLeft="28dp"
                 android:paddingRight="28dp"
                 android:paddingTop="10dp"
@@ -239,7 +240,7 @@
             android:background="@drawable/button_primary"
             android:text="@string/next"
             android:textSize="@dimen/button_text_size"
-            android:textColor="@color/on_primary"
+            android:textColor="@color/text_button_primary"
             android:gravity="center" />
 
     </LinearLayout>

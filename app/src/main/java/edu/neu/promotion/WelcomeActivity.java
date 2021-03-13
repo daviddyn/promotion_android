@@ -53,6 +53,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             case "normal":
                 //TODO: 进入主界面，requestCode=3
+                startActivityForResult(new Intent(this, MainActivity.class), 3);
                 break;
             default:
                 startActivityForResult(new Intent(this, LoginRegisterActivity.class), 1);
@@ -80,6 +81,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         break;
                     case RESULT_OK:
                         //TODO: 进入主界面，requestCode=3
+                        startActivityForResult(new Intent(this, MainActivity.class), 3);
                         break;
                     default:
                         finish();

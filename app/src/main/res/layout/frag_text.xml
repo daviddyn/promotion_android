@@ -16,7 +16,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_b"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -25,7 +25,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_i"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -34,7 +34,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_u"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -43,7 +43,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_s"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -52,7 +52,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_superscript"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -61,7 +61,7 @@
             android:layout_margin="@dimen/tool_item_margin"
             android:src="@drawable/ic_tool_subscript"
             android:scaleType="center"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp" />
@@ -74,7 +74,7 @@
             android:drawablePadding="16dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -86,7 +86,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp">
@@ -112,7 +112,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:background="@drawable/card_background"
+            android:background="@drawable/card"
             android:translationZ="@dimen/tool_item_translate_z"
             android:layout_width="0dp"
             android:layout_height="0dp">

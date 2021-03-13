@@ -66,9 +66,10 @@ public class PageTabBarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float viewWidth = getMeasuredWidth();
+        float viewLeft = getPaddingLeft();
+        float viewWidth = getMeasuredWidth() - getPaddingLeft() - getPaddingRight();
         float itemWidth = viewWidth / pageCount;
-        drawRect.set(viewWidth * pagePosition / pageCount + itemWidth * offsetRate, 0, viewWidth * (pagePosition + 1) / pageCount + itemWidth * offsetRate, getMeasuredHeight());
+        drawRect.set(viewLeft + viewWidth * pagePosition / pageCount + itemWidth * offsetRate, 0, viewLeft + viewWidth * (pagePosition + 1) / pageCount + itemWidth * offsetRate, getMeasuredHeight());
         canvas.drawRect(drawRect, drawPaint);
     }
 }
