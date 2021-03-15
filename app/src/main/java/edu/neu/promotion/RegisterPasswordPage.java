@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.text.Editable;
 import android.text.TextWatcher;

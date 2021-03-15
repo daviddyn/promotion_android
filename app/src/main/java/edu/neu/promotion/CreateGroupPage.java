@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -11,10 +11,6 @@ import com.davidsoft.utils.JsonNode;
 
 import java.util.ArrayList;
 
-import edu.neu.promotion.R;
-import edu.neu.promotion.SearchSelectItemActivity;
-import edu.neu.promotion.ServerInterfaces;
-import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.PageManager;

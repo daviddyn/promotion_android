@@ -8,12 +8,6 @@ import com.davidsoft.utils.JsonNode;
 
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageNavigatingActivity;
-import edu.neu.promotion.pages.LoginPasswordPage;
-import edu.neu.promotion.pages.LoginUseridPage;
-import edu.neu.promotion.pages.RegisterBasicInfoPage;
-import edu.neu.promotion.pages.RegisterExtraInfoPage;
-import edu.neu.promotion.pages.RegisterPasswordPage;
-import edu.neu.promotion.pages.RegisterVerifyCodePage;
 
 public class LoginRegisterActivity extends PageNavigatingActivity {
 

@@ -58,9 +58,9 @@
             android:visibility="gone"
             android:text="@string/search_empty"
             android:textColor="@color/text_tertiary"
-            android:textSize="16sp"
+            android:textSize="@dimen/list_tip_text_size"
             android:gravity="center_horizontal"
-            android:paddingTop="72dp"
+            android:paddingTop="@dimen/list_tip_padding_top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.0" />

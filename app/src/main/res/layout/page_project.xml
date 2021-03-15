@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckedTextView
+            android:id="@+id/allProjectButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:padding="@dimen/top_navigate_text_padding"
+            android:textColor="@color/text_selectable_primary"
+            android:background="@drawable/ripple"
+            android:textSize="@dimen/top_navigate_text_size"
+            android:text="全部计划" />
+
+        <CheckedTextView
+            android:id="@+id/inProjectButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:padding="@dimen/top_navigate_text_padding"
+            android:textColor="@color/text_selectable_primary"
+            android:background="@drawable/ripple"
+            android:textSize="@dimen/top_navigate_text_size"
+            android:text="我参与的" />
+
+        <CheckedTextView
+            android:id="@+id/createProjectButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:padding="@dimen/top_navigate_text_padding"
+            android:textColor="@color/text_selectable_primary"
+            android:background="@drawable/ripple"
+            android:textSize="@dimen/top_navigate_text_size"
+            android:text="我创建的" />
+
+    </LinearLayout>
+
+    <edu.neu.promotion.views.PageTabBarView
+        android:id="@+id/pageTabBarView"
+        app:color="@color/primary"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0" />
+
+</LinearLayout>

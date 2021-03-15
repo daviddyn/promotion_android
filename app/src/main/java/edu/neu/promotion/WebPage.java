@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -27,7 +27,6 @@ import android.widget.FrameLayout;
 
 import java.util.HashMap;
 
-import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageManager;

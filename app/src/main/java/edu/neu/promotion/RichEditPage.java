@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -6,9 +6,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
@@ -32,9 +32,9 @@ public class RichEditPage extends Page {
     private RichEditor richEdit;
     private View toolContainer;
     private RelativeLayout.LayoutParams toolContainerLayoutParams;
-    private TextView textButton;
-    private TextView formatButton;
-    private TextView insertButton;
+    private CheckedTextView textButton;
+    private CheckedTextView formatButton;
+    private CheckedTextView insertButton;
     private ImageView closeButton;
     private PageTabBarView pageTabBarView;
     private ViewPager viewPager;
@@ -189,11 +189,11 @@ public class RichEditPage extends Page {
 
     private void onToolPageSelected(int position) {
         textButton.setEnabled(position != 0);
-        textButton.setTextColor(getColor(position == 0 ? R.color.primary : R.color.text_primary));
+        textButton.setChecked(position == 0);
         formatButton.setEnabled(position != 1);
-        formatButton.setTextColor(getColor(position == 1 ? R.color.primary : R.color.text_primary));
+        formatButton.setChecked(position == 1);
         insertButton.setEnabled(position != 2);
-        insertButton.setTextColor(getColor(position == 2 ? R.color.primary : R.color.text_primary));
+        insertButton.setChecked(position == 2);
     }
 
     private void expandToolBar() {

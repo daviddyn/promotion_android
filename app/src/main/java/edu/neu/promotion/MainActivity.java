@@ -15,9 +15,6 @@ import androidx.core.widget.ImageViewCompat;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageSwitchingActivity;
 import edu.neu.promotion.components.RunNetworkTaskPage;
-import edu.neu.promotion.pages.HomePage;
-import edu.neu.promotion.pages.NewsPage;
-import edu.neu.promotion.pages.SelfPage;
 
 public class MainActivity extends PageSwitchingActivity {
 

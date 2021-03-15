@@ -8,6 +8,7 @@ public class AdminNode implements Serializable {
     public String adminAccount;
     public String adminPassword;
     public String adminName;
+    public String adminSex;
     public String adminPhone;
     public String adminCollege;
     public String adminPosition;

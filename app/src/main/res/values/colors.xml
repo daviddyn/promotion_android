@@ -31,6 +31,8 @@
 
     <color name="female">#FFFFAEC9</color>
     <color name="function1">#FFFF9200</color>
+    <color name="function1_pressed">#FFC06E00</color>
     <color name="function2">#FF00B043</color>
+    <color name="function2_pressed">#FF008432</color>
 
 </resources>

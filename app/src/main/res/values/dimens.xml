@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- 通用 -->
     <dimen name="actionbar_height">48dp</dimen>
+    <dimen name="actionbar_button">24dp</dimen>
     <dimen name="page_padding">32dp</dimen>
 
     <!-- 卡片 -->
@@ -33,16 +35,15 @@
     <dimen name="examine_icon_dimen">12dp</dimen>
     <dimen name="examine_icon_margin">18dp</dimen>
 
+    <!-- 带索引的列表 -->
     <dimen name="list_index_item_height">42dp</dimen>
-    <dimen name="actionbar_button">24dp</dimen>
 
+    <!-- 菜单列表 -->
     <dimen name="menu_icon_dimen">20dp</dimen>
     <dimen name="menu_item_padding">16dp</dimen>
     <dimen name="menu_icon_padding">12dp</dimen>
     <dimen name="menu_item_margin">10dp</dimen>
     <dimen name="menu_item_text_size">17sp</dimen>
-    <dimen name="function_icon_dimen">58dp</dimen>
-    <dimen name="function_text_size">12sp</dimen>
 
     <!-- 工具栏 -->
     <dimen name="tool_icon_dimen">18dp</dimen>
@@ -50,6 +51,19 @@
     <dimen name="tool_item_margin">8dp</dimen>
     <dimen name="tool_item_translate_z">1dp</dimen>
 
+    <!-- 底部和顶部导航 -->
     <dimen name="bottom_navigate_icon_dimen">24dp</dimen>
+    <dimen name="top_navigate_text_padding">12dp</dimen>
+    <dimen name="top_navigate_text_size">16sp</dimen>
 
+    <!-- 功能区 -->
+    <dimen name="function_item_dimen">58dp</dimen>
+    <dimen name="function_icon_dimen">28dp</dimen>
+    <dimen name="function_text_size">12sp</dimen>
+    <dimen name="name_card_dimen">58dp</dimen>
+    <dimen name="name_card_text_size">14sp</dimen>
+
+
+    <dimen name="list_tip_padding_top">72dp</dimen>
+    <dimen name="list_tip_text_size">16sp</dimen>
 </resources>

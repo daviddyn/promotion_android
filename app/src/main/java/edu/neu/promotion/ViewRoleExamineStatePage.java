@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.content.DialogInterface;
 import android.view.View;
@@ -6,9 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import edu.neu.promotion.R;
-import edu.neu.promotion.ServerInterfaces;
-import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminRoleNode;

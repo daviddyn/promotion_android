@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;

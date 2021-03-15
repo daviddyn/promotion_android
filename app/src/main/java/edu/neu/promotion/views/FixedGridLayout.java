@@ -79,6 +79,9 @@ public class FixedGridLayout extends ViewGroup {
         elementWidth = containsWidth / (float)columnCount;
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
+            if (child.getVisibility() == GONE) {
+                continue;
+            }
             LayoutParams lp = (LayoutParams) child.getLayoutParams();
             int colSpan = Math.max(Math.min(lp.columnSpan, columnCount), 1);
             int desiredWidth = ((int) (elementWidth * colSpan)) - lp.leftMargin - lp.rightMargin;
@@ -108,6 +111,9 @@ public class FixedGridLayout extends ViewGroup {
         int col = 0;
         for (int i = 0; i <getChildCount(); i++) {
             View v = getChildAt(i);
+            if (v.getVisibility() == GONE) {
+                continue;
+            }
             int colSpan = Math.min(((LayoutParams) v.getLayoutParams()).columnSpan, columnCount);
             if (col + colSpan > columnCount) {
                 col = 0;
@@ -130,6 +136,9 @@ public class FixedGridLayout extends ViewGroup {
         int col = 0;
         for (int i = 0; i <getChildCount(); i++) {
             View v = getChildAt(i);
+            if (v.getVisibility() == GONE) {
+                continue;
+            }
             LayoutParams lp = (LayoutParams) v.getLayoutParams();
             int colSpan = Math.max(Math.min(lp.columnSpan, columnCount), 1);
             int desiredWidth = ((int) (elementWidth * colSpan)) - lp.leftMargin - lp.rightMargin;

@@ -9,7 +9,7 @@ public class TaskRunner {
 
     public interface Callback {
         void onTaskSuccess(Task which, Object result);
-        void onTaskFailed(Task which);
+        void onTaskFailed(Task which, int currentRetryTimes);
         void onTaskRetryFailed(Task which);
     }
 
@@ -51,7 +51,7 @@ public class TaskRunner {
             int retryCounter = 0;
             while (!returnValue && retryCounter < autoRetryTimes) {
                 if (callback != null) {
-                    callback.onTaskFailed(task);
+                    callback.onTaskFailed(task, retryCounter);
                 }
                 returnValue = task.onRetry();
                 if (taskState != TASK_STATE_RUNNING) {
@@ -68,7 +68,7 @@ public class TaskRunner {
             else {
                 taskState = TASK_STATE_FAILED;
                 if (callback != null) {
-                    callback.onTaskFailed(task);
+                    callback.onTaskFailed(task, retryCounter);
                     callback.onTaskRetryFailed(task);
                 }
             }

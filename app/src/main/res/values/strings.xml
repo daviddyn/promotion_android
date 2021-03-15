@@ -37,6 +37,10 @@
 
     <string name="tip_label_network_error">网络连接发生问题，请检查你的网络设置</string>
 
+    <string name="list_footer_loading">正在加载…</string>
+    <string name="list_footer_no_more">已无更多</string>
+    <string name="list_empty">暂无内容可显示</string>
+
     <string name="confirm_logout_title">退出登录</string>
     <string name="confirm_logout_instruction">退出后，您需要再次提供您的工号和密码才能继续使用。</string>
     <string name="confirm_select_role_instruction">更换角色后，您将以全新的身份使用本系统，当前角色特有的权限将无法继续使用。继续吗？</string>
@@ -116,7 +120,13 @@
     <string name="home_myself">我的</string>
     <string name="home_my_functions">我的功能</string>
     <string name="home_on_going">进行中</string>
+    <string name="home_project">宣传计划</string>
+    <string name="home_my_member">组员管理</string>
+    <string name="home_static">信息统计</string>
 
     <string name="self_select_role">切换角色</string>
     <string name="self_change_password">修改密码</string>
+
+    <string name="member_formal">正式组员</string>
+    <string name="member_examining">审核中组员</string>
 </resources>

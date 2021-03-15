@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageActivity;
-import edu.neu.promotion.pages.SearchSelectItemPage;
 
 public class SearchSelectItemActivity extends PageActivity {
 

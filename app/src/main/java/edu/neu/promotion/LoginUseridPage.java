@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.content.DialogInterface;
 import android.text.Editable;
@@ -81,8 +81,10 @@ public class LoginUseridPage extends RunTaskPage {
     }
 
     @Override
-    protected void onTaskFailed(int requestCode) {
-        Toast.makeText(getContext(), R.string.toast_network_error, Toast.LENGTH_SHORT).show();
+    protected void onTaskFailed(int requestCode, int currentRetryTimes) {
+        if (currentRetryTimes == 0) {
+            Toast.makeText(getContext(), R.string.toast_network_error, Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

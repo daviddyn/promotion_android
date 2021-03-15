@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -12,12 +12,6 @@ import android.widget.TextView;
 
 import com.davidsoft.utils.JsonNode;
 
-import edu.neu.promotion.CreateRoleActivity;
-import edu.neu.promotion.R;
-import edu.neu.promotion.ServerInterfaces;
-import edu.neu.promotion.ServerInvoker;
-import edu.neu.promotion.StorageManager;
-import edu.neu.promotion.ViewRoleExamineStateActivity;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.PageManager;

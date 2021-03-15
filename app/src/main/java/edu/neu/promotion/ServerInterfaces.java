@@ -27,6 +27,12 @@ public final class ServerInterfaces {
         return JsonNode.toObject(((ServerInvoker.InvokeResult) invokeResult).getContent(), ServerResponseNode.class);
     }
 
+    public static ServerResponseNode analyseCommonListContent(ServerInvoker.InvokeResult invokeResult) {
+        ServerResponseNode responseNode = analyseCommonContent(invokeResult);
+        responseNode.object = responseNode.object.getField("items");
+        return JsonNode.toObject(((ServerInvoker.InvokeResult) invokeResult).getContent(), ServerResponseNode.class);
+    }
+
     public static ServerInvoker verifyCode() {
         HashMap<String, String> extraHeaders = new HashMap<>();
         extraHeaders.put("Content-Type", "application/x-www-form-urlencoded");
@@ -155,6 +161,25 @@ public final class ServerInterfaces {
             );
         }
 
+        public static ServerInvoker getAdminRoleGroupBySearch(String token, String adminAccount, String adminName, String checkState, int currentPage, int itemsPerPage) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            JsonNode admin = JsonNode.createEmptyObject();
+            admin.setField("adminAccount", adminAccount);
+            admin.setField("adminName", adminName);
+            admin.setField("checkState", checkState);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("admin", admin);
+            requestNode.params.setField("currentPage", currentPage);
+            requestNode.params.setField("showCount", itemsPerPage);
+            return new ServerInvoker(
+                    baseUrl + "/role/getAdminRoleGroupBySearch",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
     }
 
     public static final class Group {
@@ -182,6 +207,29 @@ public final class ServerInterfaces {
             requestNode.params.setField("dictionaryType", dictionaryType);
             return new ServerInvoker(
                     baseUrl + "/dictionary/getDictionaryItems",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    null
+            );
+        }
+
+    }
+
+    public static final class Project {
+
+        public static ServerInvoker getProjectBySearch(String projectAdmin, String projectGroup, String projectName, String projectState, int itemsPerPage, int currentPage) {
+            JsonNode project = JsonNode.createEmptyObject();
+            project.setField("projectAdmin", projectAdmin);
+            project.setField("projectGroup", projectGroup);
+            project.setField("projectName", projectName);
+            project.setField("projectState", projectState);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("project", project);
+            requestNode.params.setField("showCount", project);
+            requestNode.params.setField("currentPage", project);
+            return new ServerInvoker(
+                    baseUrl + "/project/getProjectBySearch",
                     new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
                     new HttpContentJsonReceiver(),
                     null

@@ -30,6 +30,8 @@
         <activity android:name=".SearchSelectItemActivity" />
         <activity android:name=".WebActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".ProjectActivity" />
+        <activity android:name=".MemberActivity" />
     </application>
 
 </manifest>

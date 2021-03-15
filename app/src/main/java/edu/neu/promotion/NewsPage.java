@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import edu.neu.promotion.R;
 import edu.neu.promotion.components.BaseActivity;

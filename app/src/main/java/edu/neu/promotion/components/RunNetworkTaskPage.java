@@ -69,9 +69,11 @@ public class RunNetworkTaskPage extends RunTaskPage {
     }
 
     @Override
-    protected void onTaskFailed(int requestCode) {
-        Toast.makeText(getContext(), R.string.toast_network_error, Toast.LENGTH_SHORT).show();
-        showTipLabel(TIP_LABEL_NETWORK_ERROR, getDrawable(R.drawable.ic_network_error), getString(R.string.tip_label_network_error), BaseActivity.TIP_LABEL_TYPE_CRITICAL, true, false);
+    protected void onTaskFailed(int requestCode, int currentRetryTimes) {
+        if (currentRetryTimes == 0) {
+            Toast.makeText(getContext(), R.string.toast_network_error, Toast.LENGTH_SHORT).show();
+            showTipLabel(TIP_LABEL_NETWORK_ERROR, getDrawable(R.drawable.ic_network_error), getString(R.string.tip_label_network_error), BaseActivity.TIP_LABEL_TYPE_CRITICAL, true, false);
+        }
     }
 
     @Override

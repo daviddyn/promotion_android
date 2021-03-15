@@ -267,6 +267,33 @@ public final class JsonNode {
                     return null;
             }
         }
+        else if (destClass.isAssignableFrom(Boolean.class)) {
+            return (T) Boolean.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Byte.class)) {
+            return (T) Byte.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Character.class)) {
+            if (jsonNode.value.length() == 0) {
+                throw new IllegalArgumentException("jsonNode was not refer to a Character.");
+            }
+            return (T) Character.valueOf(jsonNode.value.charAt(0));
+        }
+        else if (destClass.isAssignableFrom(Short.class)) {
+            return (T) Short.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Integer.class)) {
+            return (T) Integer.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Long.class)) {
+            return (T) Long.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Float.class)) {
+            return (T) Float.valueOf(jsonNode.value);
+        }
+        else if (destClass.isAssignableFrom(Double.class)) {
+            return (T) Double.valueOf(jsonNode.value);
+        }
         else if (destClass.isAssignableFrom(String.class)) {
             if (jsonNode.isNull()) {
                 return null;
@@ -300,7 +327,7 @@ public final class JsonNode {
                 return null;
             }
             if (!jsonNode.isObject()) {
-                throw new IllegalStateException("jsonNode was not an object value.");
+                throw new IllegalStateException("jsonNode was not an object value: " + jsonNode.toString());
             }
             //按Field填充
             T obj;

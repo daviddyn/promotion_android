@@ -31,15 +31,17 @@ public class RunTaskPage extends Page {
     private final class TaskFailedPoster implements Runnable {
 
         private final int requestCode;
+        private final int currentRetryTimes;
 
-        private TaskFailedPoster(int requestCode) {
+        private TaskFailedPoster(int requestCode, int currentRetryTimes) {
             this.requestCode = requestCode;
+            this.currentRetryTimes = currentRetryTimes;
         }
 
         @Override
         public void run() {
             if (tasks.containsKey(requestCode)) {
-                onTaskFailed(requestCode);
+                onTaskFailed(requestCode, currentRetryTimes);
             }
         }
     }
@@ -75,8 +77,8 @@ public class RunTaskPage extends Page {
         }
 
         @Override
-        public void onTaskFailed(Task which) {
-            post(new TaskFailedPoster(requestCode));
+        public void onTaskFailed(Task which, int currentRetryTimes) {
+            post(new TaskFailedPoster(requestCode, currentRetryTimes));
         }
 
         @Override
@@ -163,7 +165,7 @@ public class RunTaskPage extends Page {
     /**
      * 当任务失败时触发。如果设置了重试，则每次重试失败都会触发本函数。
      */
-    protected void onTaskFailed(int requestCode) {};
+    protected void onTaskFailed(int requestCode, int currentRetryTimes) {};
 
     /**
      * 当任务失败时触发。如果设置了重试，则仅最后一次重试失败才会触发本函数。

@@ -32,13 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/textButton"
                 android:text="文字"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
-                android:background="@drawable/ripple"
+                android:textColor="@color/text_selectable_primary"
+                android:textAlignment="center"
                 android:gravity="center"
+                android:background="@drawable/ripple"
                 android:layout_weight="1.0"
                 android:layout_width="0dp"
                 android:layout_height="48dp" />
@@ -48,13 +49,14 @@
                 android:layout_width="1dp"
                 android:layout_height="20dp" />
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/formatButton"
                 android:text="格式"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
-                android:background="@drawable/ripple"
+                android:textColor="@color/text_selectable_primary"
+                android:textAlignment="center"
                 android:gravity="center"
+                android:background="@drawable/ripple"
                 android:layout_weight="1.0"
                 android:layout_width="0dp"
                 android:layout_height="48dp" />
@@ -64,13 +66,14 @@
                 android:layout_width="1dp"
                 android:layout_height="20dp" />
 
-            <TextView
+            <CheckedTextView
                 android:id="@+id/insertButton"
                 android:text="插入"
                 android:textSize="14sp"
-                android:textColor="@color/text_primary"
+                android:textColor="@color/text_selectable_primary"
                 android:background="@drawable/ripple"
                 android:gravity="center"
+                android:textAlignment="center"
                 android:layout_weight="1.0"
                 android:layout_width="0dp"
                 android:layout_height="48dp" />

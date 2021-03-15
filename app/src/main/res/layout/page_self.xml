@@ -47,9 +47,9 @@
                     android:background="@drawable/button_primary_press"
                     android:gravity="center"
                     android:textColor="@color/text_button_primary"
-                    android:textSize="14sp"
-                    android:layout_width="58dp"
-                    android:layout_height="58dp" />
+                    android:textSize="@dimen/name_card_text_size"
+                    android:layout_width="@dimen/name_card_dimen"
+                    android:layout_height="@dimen/name_card_dimen" />
 
             </RelativeLayout>
 

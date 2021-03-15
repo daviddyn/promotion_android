@@ -7,8 +7,6 @@ import androidx.annotation.Nullable;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageNavigatingActivity;
 import edu.neu.promotion.components.RunNetworkTaskPage;
-import edu.neu.promotion.pages.CreateGroupPage;
-import edu.neu.promotion.pages.CreateRolePage;
 
 public class CreateRoleActivity extends PageNavigatingActivity {
 

@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageActivity;
 import edu.neu.promotion.components.RunNetworkTaskPage;
-import edu.neu.promotion.pages.ViewRoleExamineStatePage;
 
 public class ViewRoleExamineStateActivity extends PageActivity {
 

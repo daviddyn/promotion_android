@@ -1,4 +1,4 @@
-package edu.neu.promotion.pages;
+package edu.neu.promotion;
 
 import android.content.DialogInterface;
 import android.view.View;
@@ -7,12 +7,8 @@ import android.widget.TextView;
 
 import com.davidsoft.utils.JsonNode;
 
-import edu.neu.promotion.CoupleNames;
-import edu.neu.promotion.R;
-import edu.neu.promotion.StorageManager;
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.BaseActivity;
-import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleNode;
@@ -47,36 +43,33 @@ public class SelfPage extends TokenRunNetworkTaskPage {
         setActionbarStyle(BaseActivity.ACTIONBAR_STYLE_NO_BACK);
         setTitle(R.string.home_myself);
 
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v == nameCardView) {
+        View.OnClickListener onClickListener = v -> {
+            if (v == nameCardView) {
 
-                }
-                else if (v == selectRoleButton) {
-                    AlertDialog.Builder.getBottom(getContext())
-                            .setTitle(R.string.self_select_role)
-                            .setMessage(R.string.confirm_select_role_instruction)
-                            .setButton(DialogInterface.BUTTON_POSITIVE, R.string.resume, true)
-                            .setButton(DialogInterface.BUTTON_NEGATIVE, R.string.back, true)
-                            .setOnDialogButtonClickListener(onSelectRoleConfirmListener)
-                            .show();
-                }
-                else if (v == changePasswordButton) {
+            }
+            else if (v == selectRoleButton) {
+                AlertDialog.Builder.getBottom(getContext())
+                        .setTitle(R.string.self_select_role)
+                        .setMessage(R.string.confirm_select_role_instruction)
+                        .setButton(DialogInterface.BUTTON_POSITIVE, R.string.resume, true)
+                        .setButton(DialogInterface.BUTTON_NEGATIVE, R.string.back, true)
+                        .setOnDialogButtonClickListener(onSelectRoleConfirmListener)
+                        .show();
+            }
+            else if (v == changePasswordButton) {
 
-                }
-                else if (v == settingsButton) {
+            }
+            else if (v == settingsButton) {
 
-                }
-                else if (v == logoutButton) {
-                    AlertDialog.Builder.getBottom(getContext())
-                            .setTitle(R.string.confirm_logout_title)
-                            .setMessage(R.string.confirm_logout_instruction)
-                            .setButton(DialogInterface.BUTTON_POSITIVE, R.string.resume, true)
-                            .setButton(DialogInterface.BUTTON_NEGATIVE, R.string.back, true)
-                            .setOnDialogButtonClickListener(onLogoutConfirmListener)
-                            .show();
-                }
+            }
+            else if (v == logoutButton) {
+                AlertDialog.Builder.getBottom(getContext())
+                        .setTitle(R.string.confirm_logout_title)
+                        .setMessage(R.string.confirm_logout_instruction)
+                        .setButton(DialogInterface.BUTTON_POSITIVE, R.string.resume, true)
+                        .setButton(DialogInterface.BUTTON_NEGATIVE, R.string.back, true)
+                        .setOnDialogButtonClickListener(onLogoutConfirmListener)
+                        .show();
             }
         };
         onLogoutConfirmListener = (dialog, which) -> {
@@ -95,6 +88,7 @@ public class SelfPage extends TokenRunNetworkTaskPage {
         setContentView(R.layout.page_self);
         nameCardView = findViewById(R.id.nameCardView);
         nameCardView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminName));
+        nameCardView.setOnClickListener(onClickListener);
         nameView = findViewById(R.id.nameView);
         nameView.setText(adminInfo.adminName);
         idView = findViewById(R.id.idView);
