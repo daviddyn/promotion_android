@@ -35,6 +35,10 @@ public class LazyLoadListView extends ListView {
     private static final int STATE_LOADING = 1;
     private static final int STATE_NO_MORE = 2;
 
+    public interface OnLazyLoadListener {
+        void onLazyLoad(LazyLoadListView who);
+    }
+
     private View footerView;
     private ImageView loadingIconView;
     private AnimationDrawable loadingAnimation;
@@ -42,6 +46,8 @@ public class LazyLoadListView extends ListView {
 
     private boolean footerViewInVision;
     private int state;
+
+    private OnLazyLoadListener onLazyLoadListener;
 
     private void construct() {
         footerView = LayoutInflater.from(getContext()).inflate(R.layout.item_list_footer, null);
@@ -53,7 +59,14 @@ public class LazyLoadListView extends ListView {
         setOnScrollListener(new OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+                if (scrollState == SCROLL_STATE_IDLE) {
+                    if (getChildAt(getChildCount() - 1) == footerView && footerViewInVision && state == STATE_NONE) {
+                        state = STATE_LOADING;
+                        if (onLazyLoadListener != null) {
+                            onLazyLoadListener.onLazyLoad(LazyLoadListView.this);
+                        }
+                    }
+                }
             }
 
             @Override
@@ -68,10 +81,6 @@ public class LazyLoadListView extends ListView {
                         if (state != STATE_NO_MORE) {
                             loadingAnimation.start();
                         }
-                        if (state == STATE_NONE) {
-                            state = STATE_LOADING;
-                            //TODO: 通知加载
-                        }
                     }
                 }
                 else {
@@ -85,21 +94,19 @@ public class LazyLoadListView extends ListView {
         });
     }
 
-    public void debug() {
-        for (int i = 0; i < getChildCount(); i++) {
-            System.out.println(getChildAt(i) == footerView);
-        }
-    }
-
     public void notifyLoadResult(boolean hasMore) {
         loadingAnimation.stop();
         if (hasMore) {
+            state = STATE_NONE;
+        }
+        else {
             state = STATE_NO_MORE;
             loadingIconView.setVisibility(GONE);
             tipTextView.setText(R.string.list_footer_no_more);
         }
-        else {
-            state = STATE_NONE;
-        }
+    }
+
+    public void setOnLazyLoadListener(OnLazyLoadListener onLazyLoadListener) {
+        this.onLazyLoadListener = onLazyLoadListener;
     }
 }

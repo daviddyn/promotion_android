@@ -1,6 +1,7 @@
 package edu.neu.promotion;
 
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.neu.promotion.components.PageManager;
+import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleGroupNode;
 import edu.neu.promotion.enties.ServerResponseListNode;
 import edu.neu.promotion.enties.ServerResponseNode;
@@ -35,6 +37,8 @@ public class MemberPage extends TokenRunNetworkTaskPage {
     private static final int TASK_GET_FORMAL_MEMBERS = 1;
     private static final int TASK_GET_EXAMINE_MEMBERS = 2;
     private static final int TASK_APPEND_FORMAL_MEMBERS = 3;
+
+    private final AdminNode adminInfo;
 
     private ArrayList<AdminRoleGroupNode> formalMembers;
     private ArrayList<AdminRoleGroupNode> examineMembers;
@@ -56,24 +60,50 @@ public class MemberPage extends TokenRunNetworkTaskPage {
 
     public MemberPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
+        adminInfo = JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.USER_INFO), AdminNode.class);
     }
 
     @Override
     protected void onCreate() {
         super.onCreate();
+        setTitle(R.string.home_my_member);
+        addActionbarButton(getDrawable(R.drawable.ic_actionbar_search), R.string.search);
+
+        View.OnClickListener onClickListener = v -> {
+            if (v == formalButton) {
+                viewPager.setCurrentItem(0);
+            }
+            else if (v == examiningButton) {
+                viewPager.setCurrentItem(1);
+            }
+        };
 
         formalMembers = new ArrayList<>();
         examineMembers = new ArrayList<>();
 
         formalListView = new LazyLoadListView(getContext());
-        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupAdminFiller.class);
+        formalListView.setDivider(getDrawable(R.color.split_bar));
+        formalListView.setDividerHeight(1);
+        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupAdminFiller.class, adminInfo.adminId);
         formalListView.setAdapter(formalListAdapter);
         formalListView.setVisibility(View.GONE);
+        formalListView.setOnLazyLoadListener(who -> runTask(
+                ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD + 1, ITEMS_PER_LOAD),
+                Integer.MAX_VALUE,
+                TASK_APPEND_FORMAL_MEMBERS
+        ));
         examineListView = new LazyLoadListView(getContext());
+        examineListView.setDivider(getDrawable(R.color.split_bar));
+        examineListView.setDividerHeight(1);
         examineListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupExamineFiller.class);
         examineListView.setAdapter(formalListAdapter);
         examineListView.setVisibility(View.GONE);
+        examineListView.setOnLazyLoadListener(new LazyLoadListView.OnLazyLoadListener() {
+            @Override
+            public void onLazyLoad(LazyLoadListView who) {
 
+            }
+        });
         loadingAnimations = new AnimationDrawable[2];
         loadingViews = new ImageView[2];
         emptyTips = new TextView[2];
@@ -99,7 +129,9 @@ public class MemberPage extends TokenRunNetworkTaskPage {
 
         setContentView(R.layout.page_member);
         formalButton = findViewById(R.id.formalButton);
+        formalButton.setOnClickListener(onClickListener);
         examiningButton = findViewById(R.id.examiningButton);
+        examiningButton.setOnClickListener(onClickListener);
         pageTabBarView = findViewById(R.id.pageTabBarView);
         viewPager = findViewById(R.id.viewPager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -156,7 +188,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                     mainViewLoadState[0] = 1;
                     loadingAnimations[0].start();
                     runTask(
-                            ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD + 1, ITEMS_PER_LOAD),
                             Integer.MAX_VALUE,
                             TASK_GET_FORMAL_MEMBERS
                     );

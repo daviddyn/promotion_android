@@ -144,16 +144,18 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
                 recentListView.setVisibility(View.GONE);
             }
             if (availableListView.getChildCount() == 0) {
-                subtitleTextView.setText(R.string.select_role_subtitle_no_available);
                 availableTitleView.setVisibility(View.GONE);
                 availableListView.setVisibility(View.GONE);
-            }
-            else {
-                subtitleTextView.setText(R.string.select_role_subtitle_normal);
             }
             if (unavailableListView.getChildCount() == 0) {
                 unavailableTitleView.setVisibility(View.GONE);
                 unavailableListView.setVisibility(View.GONE);
+            }
+            if (recentListView.getChildCount() == 0 && availableListView.getChildCount() == 0) {
+                subtitleTextView.setText(R.string.select_role_subtitle_no_available);
+            }
+            else {
+                subtitleTextView.setText(R.string.select_role_subtitle_normal);
             }
             getLayoutInflater().inflate(R.layout.item_role, newListView);
             setItemCreate(newListView.getChildAt(0));

@@ -6,6 +6,8 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,6 +23,13 @@
             android:background="@drawable/ripple"
             android:textSize="@dimen/top_navigate_text_size"
             android:text="@string/member_formal" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/split_bar"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
 
         <CheckedTextView
             android:id="@+id/examiningButton"

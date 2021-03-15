@@ -1,9 +1,12 @@
 package edu.neu.promotion;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import com.davidsoft.utils.JsonNode;
 
@@ -57,7 +60,7 @@ public class SelfPage extends TokenRunNetworkTaskPage {
                         .show();
             }
             else if (v == changePasswordButton) {
-
+                startActivity(new Intent(getContext(), ChangePasswordActivity.class));
             }
             else if (v == settingsButton) {
 
@@ -89,6 +92,7 @@ public class SelfPage extends TokenRunNetworkTaskPage {
         nameCardView = findViewById(R.id.nameCardView);
         nameCardView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminName));
         nameCardView.setOnClickListener(onClickListener);
+        nameCardView.setBackground(ResourcesCompat.getDrawable(getResource(), "女".equals(adminInfo.adminSex) ? R.drawable.button_female_normal : R.drawable.button_primary_normal, null));
         nameView = findViewById(R.id.nameView);
         nameView.setText(adminInfo.adminName);
         idView = findViewById(R.id.idView);

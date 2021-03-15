@@ -31,7 +31,12 @@ public class AdminEntityFiller implements EntityFiller<AdminNode> {
         Resources resources = nameCardView.getContext().getResources();
         nameCardView.setBackground(ResourcesCompat.getDrawable(resources, "女".equals(entity.adminSex) ? R.drawable.button_female_normal : R.drawable.button_primary_normal, null));
         nameCardView.setText(CoupleNames.getInstance(resources).getShortName(entity.adminName));
-        nameView.setText(entity.adminName);
+        if (entity.adminId.equals(tag)) {
+            nameView.setText(entity.adminName + "（我自己）");
+        }
+        else {
+            nameView.setText(entity.adminName);
+        }
         departmentView.setText(entity.adminCollege.isEmpty() ? "--" : entity.adminCollege);
     }
 

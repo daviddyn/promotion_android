@@ -66,9 +66,6 @@ public class MainActivity extends PageSwitchingActivity {
         addContentPage(new SelfPage(this));
 
         switchToPage(1);
-
-        addActionbarButton(ContextCompat.getDrawable(this, R.drawable.ic_actionbar_notification), R.string.system_notification);
-        setActionbarButtonBadge(0, true);
     }
 
     @Override
@@ -110,7 +107,4 @@ public class MainActivity extends PageSwitchingActivity {
         ImageViewCompat.setImageTintList(buttonImages[position], ColorStateList.valueOf(getResources().getColor(R.color.primary)));
         buttonTexts[position].setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.primary)));
     }
-
-    @Override
-    public void removeAllActionbarButtons() {}
 }

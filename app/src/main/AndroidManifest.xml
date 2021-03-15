@@ -32,6 +32,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ProjectActivity" />
         <activity android:name=".MemberActivity" />
+        <activity android:name=".ChangePasswordActivity" />
     </application>
 
 </manifest>

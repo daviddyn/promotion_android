@@ -10,7 +10,9 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_margin="8dp"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:layout_marginLeft="@dimen/menu_item_margin"
+            android:layout_marginRight="@dimen/menu_item_margin"
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
@@ -121,7 +123,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_margin="8dp"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:layout_marginLeft="@dimen/menu_item_margin"
+            android:layout_marginRight="@dimen/menu_item_margin"
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

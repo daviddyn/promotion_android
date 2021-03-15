@@ -17,6 +17,7 @@
     <string name="female">女士</string>
     <string name="search">搜索</string>
     <string name="system_notification">系统通知</string>
+    <string name="scan">扫一扫</string>
     <string name="logout">退出登录</string>
     <string name="settings">设置</string>
     <string name="network_retry">网络错误，请点击此处重试</string>
@@ -80,6 +81,10 @@
     <string name="register_extra_degree_title">请问您的学历层次是？</string>
     <string name="register_verify_title">请输入验证码</string>
     <string name="register_verify_change">更换验证码</string>
+
+    <string name="change_password_title">修改密码</string>
+    <string name="change_password_original">原始密码</string>
+    <string name="change_password_original_input_hint">请输入原始密码</string>
 
     <string name="select_role_title">欢迎您，%s！</string>
     <string name="select_role_subtitle_normal">选择一个角色以继续</string>

@@ -124,10 +124,4 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
 
         addActionbarButton(getDrawable(R.drawable.ic_actionbar_search), "");
     }
-
-    @Override
-    protected void onActionbarButtonClick(int position, View viewForAnchor) {
-        super.onActionbarButtonClick(position, viewForAnchor);
-        lazyLoadListView.debug();
-    }
 }

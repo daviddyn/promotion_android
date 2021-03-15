@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.core.content.ContextCompat;
+
 import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageManager;
@@ -26,6 +28,10 @@ public class HomePage extends Page {
         super.onCreate();
         setActionbarStyle(BaseActivity.ACTIONBAR_STYLE_NO_BACK);
         setTitle(R.string.home_home_page);
+
+        addActionbarButton(ContextCompat.getDrawable(getContext(), R.drawable.ic_actionbar_notification), R.string.system_notification);
+        setActionbarButtonBadge(0, true);
+        addActionbarButton(ContextCompat.getDrawable(getContext(), R.drawable.ic_actionbar_scan), R.string.scan);
 
         View.OnClickListener onClickListener = v -> {
             if (v == projectButton) {
