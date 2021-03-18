@@ -122,6 +122,7 @@ public class NewPasswordPage extends TokenRunNetworkTaskPage {
                     nextButton.setEnabled(false);
                     passwordAgainEdit.getEditText().setText("");
                     passwordAgainEdit.requestFocus();
+                    passwordMatchTip.setVisibility(View.INVISIBLE);
                 }
                 else {
                     passwordRequirementTip.setTextColor(getColor(R.color.critical));

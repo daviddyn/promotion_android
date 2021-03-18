@@ -101,7 +101,6 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
         newTitleView = findViewById(R.id.newTitleView);
         newListView = findViewById(R.id.newListView);
         if (roles.length == 0) {
-            subtitleTextView.setText(R.string.select_role_subtitle_no_role);
             recentTitleView.setVisibility(View.GONE);
             recentListView.setVisibility(View.GONE);
             availableTitleView.setVisibility(View.GONE);
@@ -109,16 +108,10 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
             unavailableTitleView.setVisibility(View.GONE);
             unavailableListView.setVisibility(View.GONE);
             newTitleView.setVisibility(View.GONE);
-            newListView.setVisibility(View.GONE);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            int pagePadding = (int) getDimension(R.dimen.page_padding);
-            layoutParams.setMargins(pagePadding, (int) getDimension(R.dimen.navigate_content_margin), pagePadding, 0);
-            View roleItemView = getLayoutInflater().inflate(R.layout.item_role, null);
-            setItemCreate(roleItemView);
-            ((LinearLayout) findViewById(R.id.mainLinearLayout)).addView(roleItemView, layoutParams);
+            subtitleTextView.setText(R.string.select_role_subtitle_no_role);
+            View roleItemView = ((LinearLayout) getLayoutInflater().inflate(R.layout.item_role, newListView)).getChildAt(0);
+            ((LinearLayout.LayoutParams) roleItemView.getLayoutParams()).topMargin += (int) getDimension(R.dimen.navigate_content_margin);
+            //roleItemView.requestLayout();
         }
         else {
             for (int i = 0; i < roles.length; i++) {
@@ -158,8 +151,8 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
                 subtitleTextView.setText(R.string.select_role_subtitle_normal);
             }
             getLayoutInflater().inflate(R.layout.item_role, newListView);
-            setItemCreate(newListView.getChildAt(0));
         }
+        setItemCreate(newListView.getChildAt(0));
     }
 
     private void setItemCreate(View roleItemView) {

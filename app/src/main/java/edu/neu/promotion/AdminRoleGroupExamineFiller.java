@@ -17,6 +17,7 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
     private TextView nameCardView;
     private TextView nameView;
     private TextView departmentView;
+    private TextView stateTextView;
 
     @Override
     public View generateView(Context context) {
@@ -24,6 +25,7 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
         nameCardView = rootView.findViewById(R.id.nameCardView);
         nameView = rootView.findViewById(R.id.nameView);
         departmentView = rootView.findViewById(R.id.departmentView);
+        stateTextView = rootView.findViewById(R.id.stateTextView);
         return rootView;
     }
 
@@ -32,8 +34,40 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
         Resources resources = nameCardView.getContext().getResources();
         nameCardView.setBackground(ResourcesCompat.getDrawable(resources, R.drawable.button_gray_normal, null));
         nameCardView.setText(CoupleNames.getInstance(resources).getShortName(entity.adminObj.adminName));
-        nameView.setText(entity.adminObj.adminName);
-        departmentView.setText(entity.checkStateObj.dictionaryName);
+        if (entity.adminId.equals(tag)) {
+            nameView.setText(entity.adminObj.adminName + "（我自己）");
+        }
+        else {
+            nameView.setText(entity.adminObj.adminName);
+        }
+        boolean hasContent = false;
+        departmentView.setText("");
+        if (entity.adminObj.adminCollegeObj != null) {
+            hasContent = true;
+            departmentView.append(entity.adminObj.adminCollegeObj.dictionaryName);
+        }
+        if (entity.adminObj.adminPosition != null && !entity.adminObj.adminPosition.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminObj.adminPosition);
+        }
+        if (entity.adminObj.isStudent() && entity.adminObj.adminDegree != null && !entity.adminObj.adminDegree.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminObj.adminDegree);
+        }
+        if (!hasContent) {
+            departmentView.setText("- -");
+        }
+        stateTextView.setText(entity.checkStateObj.dictionaryName);
     }
 
     @Override

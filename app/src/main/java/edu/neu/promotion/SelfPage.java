@@ -15,8 +15,12 @@ import edu.neu.promotion.components.BaseActivity;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleNode;
+import edu.neu.promotion.enties.PowerNode;
+import edu.neu.promotion.enties.ServerResponseNode;
 
 public class SelfPage extends TokenRunNetworkTaskPage {
+
+    private static final int TASK_UPDATE_USER_INFO = 1;
 
     private final AdminNode adminInfo;
     private final AdminRoleNode roleInfo;
@@ -90,15 +94,28 @@ public class SelfPage extends TokenRunNetworkTaskPage {
 
         setContentView(R.layout.page_self);
         nameCardView = findViewById(R.id.nameCardView);
-        nameCardView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminName));
         nameCardView.setOnClickListener(onClickListener);
-        nameCardView.setBackground(ResourcesCompat.getDrawable(getResource(), "女".equals(adminInfo.adminSex) ? R.drawable.button_female_normal : R.drawable.button_primary_normal, null));
         nameView = findViewById(R.id.nameView);
-        nameView.setText(adminInfo.adminName);
         idView = findViewById(R.id.idView);
-        idView.setText(adminInfo.adminAccount);
         roleIconView = findViewById(R.id.roleIconView);
         roleNameView = findViewById(R.id.roleNameView);
+        selectRoleButton = findViewById(R.id.selectRoleButton);
+        selectRoleButton.setOnClickListener(onClickListener);
+        changePasswordButton = findViewById(R.id.changePasswordButton);
+        changePasswordButton.setOnClickListener(onClickListener);
+        settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(onClickListener);
+        logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(onClickListener);
+
+        updateViews();
+    }
+
+    private void updateViews() {
+        nameCardView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminName));
+        nameCardView.setBackground(ResourcesCompat.getDrawable(getResource(), "女".equals(adminInfo.adminSex) ? R.drawable.button_female_normal : R.drawable.button_primary_normal, null));
+        nameView.setText(adminInfo.adminName);
+        idView.setText(adminInfo.adminAccount);
         switch (roleInfo.roleId) {
             case "role_monitor":
                 roleIconView.setImageDrawable(getDrawable(R.drawable.ic_role_admin));
@@ -113,24 +130,35 @@ public class SelfPage extends TokenRunNetworkTaskPage {
                 roleNameView.setText(roleInfo.groupObj.groupName + " - " + roleInfo.roleObj.roleName);
                 break;
         }
-        selectRoleButton = findViewById(R.id.selectRoleButton);
-        selectRoleButton.setOnClickListener(onClickListener);
-        changePasswordButton = findViewById(R.id.changePasswordButton);
-        changePasswordButton.setOnClickListener(onClickListener);
-        settingsButton = findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(onClickListener);
-        logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(onClickListener);
+
+    }
+
+    @Override
+    protected void onSwitchedOn() {
+        super.onResume();
+        runTask(ServerInterfaces.getMyselfMessage(getToken()), Integer.MAX_VALUE, TASK_UPDATE_USER_INFO);
     }
 
     private void logout() {
+        cancelAllTasks();
         StorageManager.clear(getContext(), StorageManager.TOKEN);
         StorageManager.clear(getContext(), StorageManager.TOKEN_TYPE);
         notifyParent(RESULT_NEED_LOGIN);
     }
 
     private void selectRole() {
+        cancelAllTasks();
         StorageManager.setValue(getContext(), StorageManager.TOKEN_TYPE, "role");
         notifyParent(0);
+    }
+
+    @Override
+    protected void onTaskResult(int requestCode, Object result) {
+        super.onTaskResult(requestCode, result);
+        ServerResponseNode response = ServerInterfaces.analyseCommonContent((ServerInvoker.InvokeResult) result);
+        if (response.code == ServerInterfaces.RESULT_CODE_SUCCESS) {
+            StorageManager.setJson(getContext(), StorageManager.USER_INFO, response.object);
+            updateViews();
+        }
     }
 }

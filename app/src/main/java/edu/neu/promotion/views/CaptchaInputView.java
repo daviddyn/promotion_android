@@ -265,9 +265,6 @@ public class CaptchaInputView extends ViewGroup {
 
     @SuppressLint("InflateParams")
     private void reloadEditTexts(int count, boolean numberOnly) {
-        Context context = getContext();
-        Resources resources = getResources();
-
         removeAllViews();
 
         digitEdits = new EditText[count];

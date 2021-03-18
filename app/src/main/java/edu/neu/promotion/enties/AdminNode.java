@@ -19,5 +19,9 @@ public class AdminNode implements Serializable {
     public String adminPasswordAgn;
     public String code;
     public String aescode;
+    public DictionaryItemNode adminCollegeObj;
 
+    public boolean isStudent() {
+        return "学生".equals(adminPosition);
+    }
 }

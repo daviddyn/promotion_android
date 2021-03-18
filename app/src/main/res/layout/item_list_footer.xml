@@ -14,7 +14,7 @@
     <TextView
         android:id="@+id/tipTextView"
         android:text="@string/list_footer_loading"
-        android:textSize="14sp"
+        android:textSize="@dimen/list_tip_text_size"
         android:layout_marginLeft="12dp"
         android:textColor="@color/text_tertiary"
         android:layout_width="wrap_content"

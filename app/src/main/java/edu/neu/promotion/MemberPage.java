@@ -3,6 +3,7 @@ package edu.neu.promotion;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckedTextView;
@@ -37,6 +38,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
     private static final int TASK_GET_FORMAL_MEMBERS = 1;
     private static final int TASK_GET_EXAMINE_MEMBERS = 2;
     private static final int TASK_APPEND_FORMAL_MEMBERS = 3;
+    private static final int TASK_APPEND_EXAMINE_MEMBERS = 4;
 
     private final AdminNode adminInfo;
 
@@ -96,14 +98,13 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         examineListView.setDivider(getDrawable(R.color.split_bar));
         examineListView.setDividerHeight(1);
         examineListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupExamineFiller.class);
-        examineListView.setAdapter(formalListAdapter);
+        examineListView.setAdapter(examineListAdapter);
         examineListView.setVisibility(View.GONE);
-        examineListView.setOnLazyLoadListener(new LazyLoadListView.OnLazyLoadListener() {
-            @Override
-            public void onLazyLoad(LazyLoadListView who) {
-
-            }
-        });
+        examineListView.setOnLazyLoadListener(who -> runTask(
+                ServerInterfaces.Role.getNoCheckAdminRoleGroupBySearch(getToken(), "", "", formalMembers.size() / ITEMS_PER_LOAD + 1, ITEMS_PER_LOAD),
+                Integer.MAX_VALUE,
+                TASK_APPEND_EXAMINE_MEMBERS
+        ));
         loadingAnimations = new AnimationDrawable[2];
         loadingViews = new ImageView[2];
         emptyTips = new TextView[2];
@@ -114,6 +115,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
             loadingViews[i].setScaleType(ImageView.ScaleType.CENTER);
             loadingViews[i].setImageDrawable(loadingAnimations[i]);
             emptyTips[i] = new TextView(getContext());
+            emptyTips[i].setGravity(Gravity.CENTER);
             emptyTips[i].setTextColor(getColor(R.color.text_tertiary));
             emptyTips[i].setTextSize(TypedValue.COMPLEX_UNIT_PX, getDimension(R.dimen.list_tip_text_size));
             emptyTips[i].setPadding(0, (int) getDimension(R.dimen.list_tip_padding_top), 0, 0);
@@ -121,7 +123,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
             emptyTips[i].setVisibility(View.GONE);
             pages[i] = new FrameLayout(getContext());
             pages[i].addView(loadingViews[i], -1, -1);
-            pages[i].addView(emptyTips[i], -1, -1);
+            pages[i].addView(emptyTips[i], -1, -2);
         }
         pages[0].addView(formalListView);
         pages[1].addView(examineListView);
@@ -199,6 +201,15 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                 formalButton.setChecked(false);
                 examiningButton.setEnabled(false);
                 examiningButton.setChecked(true);
+                if (mainViewLoadState[1] == 0) {
+                    mainViewLoadState[1] = 1;
+                    loadingAnimations[1].start();
+                    runTask(
+                            ServerInterfaces.Role.getNoCheckAdminRoleGroupBySearch(getToken(), "", "", formalMembers.size() / ITEMS_PER_LOAD + 1, ITEMS_PER_LOAD),
+                            Integer.MAX_VALUE,
+                            TASK_GET_EXAMINE_MEMBERS
+                    );
+                }
                 break;
         }
     }
@@ -225,10 +236,28 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                     formalListAdapter.notifyDataSetChanged();
                 }
                 break;
+            case TASK_GET_EXAMINE_MEMBERS:
+                examineMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
+                examineListView.notifyLoadResult(responseListNode.isMore != 0);
+                loadingAnimations[1].stop();
+                loadingViews[1].setVisibility(View.GONE);
+                if (examineMembers.isEmpty()) {
+                    emptyTips[1].setVisibility(View.VISIBLE);
+                }
+                else {
+                    examineListView.setVisibility(View.VISIBLE);
+                    examineListAdapter.notifyDataSetChanged();
+                }
+                break;
             case TASK_APPEND_FORMAL_MEMBERS:
                 formalMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
                 formalListView.notifyLoadResult(responseListNode.isMore != 0);
                 formalListAdapter.notifyDataSetChanged();
+                break;
+            case TASK_APPEND_EXAMINE_MEMBERS:
+                examineMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
+                examineListView.notifyLoadResult(responseListNode.isMore != 0);
+                examineListAdapter.notifyDataSetChanged();
                 break;
         }
     }
