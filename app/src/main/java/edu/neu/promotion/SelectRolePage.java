@@ -192,17 +192,19 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
             groupNameText.setText(role.groupObj.groupName);
             roleNameText.setText(role.roleObj.roleName);
         }
+        TextView stateTextView = roleItemView.findViewById(R.id.stateTextView);
         switch (role.checkState) {
             case "admin_check_state_0":
-                ((TextView) roleItemView.findViewById(R.id.stateTextView)).setText(R.string.select_role_denied);
-                roleIconView.setImageTintList(ColorStateList.valueOf(getColor(R.color.critical)));
+                stateTextView.setText(R.string.select_role_denied);
+                stateTextView.setTextColor(getColor(R.color.critical));
+                roleIconView.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_tertiary)));
                 break;
             case "admin_check_state_5":
-                roleItemView.findViewById(R.id.stateTextView).setVisibility(View.GONE);
+                stateTextView.setVisibility(View.GONE);
                 roleIconView.setImageTintList(ColorStateList.valueOf(getColor(R.color.primary)));
                 break;
             default:
-                ((TextView) roleItemView.findViewById(R.id.stateTextView)).setText(R.string.select_role_unavailable);
+                stateTextView.setText(R.string.select_role_unavailable);
                 roleIconView.setImageTintList(ColorStateList.valueOf(getColor(R.color.text_tertiary)));
                 break;
         }

@@ -1,12 +1,18 @@
 package edu.neu.promotion;
 
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.widget.ImageViewCompat;
+
 import com.davidsoft.utils.JsonNode;
+
+import java.util.Arrays;
 
 import edu.neu.promotion.components.AlertDialog;
 import edu.neu.promotion.components.PageManager;
@@ -50,7 +56,10 @@ public class ViewRoleExamineStatePage extends TokenRunNetworkTaskPage {
 
     private void loadMainViews() {
         setContentView(R.layout.page_view_role_examine_state);
-        ((TextView) findViewById(R.id.examineStateView)).setText(roleInfo.checkStateObj.dictionaryName);
+        TimeListNode primaryNode = timeList[timeList.length - 1];
+        if (primaryNode.time != null && !primaryNode.time.isEmpty()) {
+            ((TextView) findViewById(R.id.examineStateView)).setText(getString(R.string.view_role_examine_state_at, primaryNode.time));
+        }
         ImageView roleIconView = findViewById(R.id.roleIconView);
         TextView groupNameText = findViewById(R.id.groupNameText);
         TextView roleNameText = findViewById(R.id.roleNameText);
@@ -90,6 +99,65 @@ public class ViewRoleExamineStatePage extends TokenRunNetworkTaskPage {
                     .setOnDialogButtonClickListener(onCancelConfirmListener)
                     .show();
         });
+        //时间线
+        LinearLayout examineProgressListView = findViewById(R.id.examineProgressListView);
+        for (int i = 0; i < timeList.length; i++) {
+            getLayoutInflater().inflate(R.layout.item_examine_progress, examineProgressListView);
+            fillExamineProgressItem(examineProgressListView.getChildAt(i), timeList[i], i == timeList.length - 1);
+        }
+    }
+
+    private void fillExamineProgressItem(View rootView, TimeListNode timeListNode, boolean primaryItem) {
+        TextView examineResultView = rootView.findViewById(R.id.examineResultView);
+        int color;
+        switch (timeListNode.type) {
+            case TimeListNode.TYPE_PRIMARY:
+                ((ImageView) rootView.findViewById(R.id.dotView)).setImageDrawable(getDrawable(R.drawable.ic_examine_primary));
+                color = getColor(R.color.primary);
+                break;
+            case TimeListNode.TYPE_ON_GOING:
+                ((ImageView) rootView.findViewById(R.id.dotView)).setImageDrawable(getDrawable(R.drawable.ic_examine_on_going));
+                color = getColor(R.color.gray);
+                break;
+            case TimeListNode.TYPE_DENIED:
+                ((ImageView) rootView.findViewById(R.id.dotView)).setImageDrawable(getDrawable(R.drawable.ic_examine_denied));
+                color = getColor(R.color.critical);
+                break;
+            default:
+                ((ImageView) rootView.findViewById(R.id.dotView)).setImageDrawable(getDrawable(R.drawable.ic_examine_passed));
+                color = getColor(R.color.positive);
+                break;
+        }
+        examineResultView.setTextColor(color);
+        examineResultView.setText(timeListNode.text);
+        if (primaryItem) {
+            rootView.findViewById(R.id.additionalArea).setVisibility(View.GONE);
+        }
+        else {
+            ImageViewCompat.setImageTintList(rootView.findViewById(R.id.lineView), ColorStateList.valueOf(color));
+            if (timeListNode.admin != null && !timeListNode.admin.isEmpty()) {
+                ((TextView) rootView.findViewById(R.id.examineOperatorView)).setText(timeListNode.admin);
+                if (timeListNode.time != null && !timeListNode.time.isEmpty()) {
+                    ((TextView) rootView.findViewById(R.id.examineDateView)).setText(timeListNode.time);
+                }
+            }
+        }
+    }
+
+    private void processTimeListResult(TimeListNode[] timeList) {
+        //timeList[0]代表最新状态
+        if (TimeListNode.TYPE_DENIED.equals(timeList[0].type)) {
+            if (timeList.length > 2) {
+                this.timeList = Arrays.copyOfRange(timeList, 1, timeList.length);
+                this.timeList[0].type = TimeListNode.TYPE_DENIED;
+            }
+            else {
+                this.timeList = timeList;
+            }
+        }
+        else {
+            this.timeList = timeList;
+        }
     }
 
     @Override
@@ -138,7 +206,7 @@ public class ViewRoleExamineStatePage extends TokenRunNetworkTaskPage {
         }
         switch (requestCode) {
             case TASK_GET_TIME_LINE:
-                timeList = JsonNode.toObject(responseNode.object, TimeListNode[].class);
+                processTimeListResult(JsonNode.toObject(responseNode.object, TimeListNode[].class));
                 loadMainViews();
                 toNormalState();
                 break;

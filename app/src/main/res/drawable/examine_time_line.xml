@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="@dimen/examine_icon_margin"
-    android:height="@dimen/examine_icon_margin"
-    android:viewportWidth="12"
-    android:viewportHeight="12">
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <path
-        android:strokeLineCap="round"
-        android:strokeWidth="1"
-        android:strokeColor="#FFFFFFFF"
-        android:pathData="M6,1l0,10" />
+    <corners android:radius="1080dp" />
+    <solid android:color="#FFFFFFFF" />
 
-</vector>
+</shape>

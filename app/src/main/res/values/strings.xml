@@ -112,6 +112,7 @@
     <string name="view_role_examine_state_cancel">取消申请</string>
     <string name="view_role_examine_state_delete">删除申请记录</string>
     <string name="view_role_examine_state_group">申请组织：%s</string>
+    <string name="view_role_examine_state_at">申请于 %s</string>
     <string name="view_role_examine_state_role">申请角色：%s</string>
     <string name="view_role_examine_state_cancel_confirm_title">取消申请</string>
     <string name="view_role_examine_state_cancel_confirm_message">此后若想使用此角色，您需要重新发出申请。</string>
