@@ -17,6 +17,7 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
     private TextView nameCardView;
     private TextView nameView;
     private TextView departmentView;
+    private TextView stateTextView;
 
     @Override
     public View generateView(Context context) {
@@ -24,6 +25,9 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
         nameCardView = rootView.findViewById(R.id.nameCardView);
         nameView = rootView.findViewById(R.id.nameView);
         departmentView = rootView.findViewById(R.id.departmentView);
+        stateTextView = rootView.findViewById(R.id.stateTextView);
+        stateTextView.setTextColor(context.getResources().getColor(R.color.positive));
+        stateTextView.setText(R.string.member_can_check);
         return rootView;
     }
 
@@ -34,6 +38,7 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
         nameCardView.setText(CoupleNames.getInstance(resources).getShortName(entity.adminObj.adminName));
         nameView.setText(entity.adminObj.adminName);
         departmentView.setText(entity.checkStateObj.dictionaryName);
+        stateTextView.setVisibility(entity.canCheck ? View.VISIBLE : View.GONE);
     }
 
     @Override

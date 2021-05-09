@@ -14,9 +14,9 @@ public class ProjectNode {
 
     public String projectAdmin;
 
-    public Date projectMakeDate;
+    public String projectMakeDate;
 
-    public Date projectAlterDate;
+    public String projectAlterDate;
 
     public String projectDescription;
 

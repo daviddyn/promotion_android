@@ -15,12 +15,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.davidsoft.utils.JsonNode;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.neu.promotion.components.PageManager;
+import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleGroupNode;
 import edu.neu.promotion.enties.ServerResponseListNode;
 import edu.neu.promotion.enties.ServerResponseNode;
@@ -35,6 +34,9 @@ public class MemberPage extends TokenRunNetworkTaskPage {
     private static final int TASK_GET_FORMAL_MEMBERS = 1;
     private static final int TASK_GET_EXAMINE_MEMBERS = 2;
     private static final int TASK_APPEND_FORMAL_MEMBERS = 3;
+    private static final int TASK_APPEND_EXAMINE_MEMBERS = 4;
+
+    private final AdminNode adminInfo;
 
     private ArrayList<AdminRoleGroupNode> formalMembers;
     private ArrayList<AdminRoleGroupNode> examineMembers;
@@ -56,6 +58,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
 
     public MemberPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
+        adminInfo = JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.USER_INFO), AdminNode.class);
     }
 
     @Override
@@ -66,12 +69,22 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         examineMembers = new ArrayList<>();
 
         formalListView = new LazyLoadListView(getContext());
-        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupAdminFiller.class);
+        formalListView.setOnLoadListener(() -> runTask(
+                ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                Integer.MAX_VALUE,
+                TASK_APPEND_FORMAL_MEMBERS
+        ));
+        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupAdminFiller.class, adminInfo.adminId);
         formalListView.setAdapter(formalListAdapter);
         formalListView.setVisibility(View.GONE);
         examineListView = new LazyLoadListView(getContext());
-        examineListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupExamineFiller.class);
-        examineListView.setAdapter(formalListAdapter);
+        examineListView.setOnLoadListener(() -> runTask(
+                ServerInterfaces.Role.getNoCheckAdminRoleGroupBySearch(getToken(), formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                Integer.MAX_VALUE,
+                TASK_APPEND_EXAMINE_MEMBERS
+        ));
+        examineListAdapter = new EntityAdapter<>(examineMembers, AdminRoleGroupExamineFiller.class);
+        examineListView.setAdapter(examineListAdapter);
         examineListView.setVisibility(View.GONE);
 
         loadingAnimations = new AnimationDrawable[2];
@@ -97,9 +110,20 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         pages[1].addView(examineListView);
         mainViewLoadState = new int[2];
 
+        View.OnClickListener onClickListener = v -> {
+            if (v == formalButton) {
+                viewPager.setCurrentItem(0);
+            }
+            else if (v == examiningButton) {
+                viewPager.setCurrentItem(1);
+            }
+        };
+
         setContentView(R.layout.page_member);
         formalButton = findViewById(R.id.formalButton);
+        formalButton.setOnClickListener(onClickListener);
         examiningButton = findViewById(R.id.examiningButton);
+        examiningButton.setOnClickListener(onClickListener);
         pageTabBarView = findViewById(R.id.pageTabBarView);
         viewPager = findViewById(R.id.viewPager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -143,6 +167,9 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         });
 
         onPageSelected(0);
+
+        setTitle(R.string.member_title);
+        addActionbarButton(getDrawable(R.drawable.ic_actionbar_search), R.string.search);
     }
 
     private void onPageSelected(int position) {
@@ -167,6 +194,15 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                 formalButton.setChecked(false);
                 examiningButton.setEnabled(false);
                 examiningButton.setChecked(true);
+                if (mainViewLoadState[1] == 0) {
+                    mainViewLoadState[1] = 1;
+                    loadingAnimations[1].start();
+                    runTask(
+                            ServerInterfaces.Role.getNoCheckAdminRoleGroupBySearch(getToken(), formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            Integer.MAX_VALUE,
+                            TASK_GET_EXAMINE_MEMBERS
+                    );
+                }
                 break;
         }
     }
@@ -197,6 +233,25 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                 formalMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
                 formalListView.notifyLoadResult(responseListNode.isMore != 0);
                 formalListAdapter.notifyDataSetChanged();
+                break;
+
+            case TASK_GET_EXAMINE_MEMBERS:
+                examineMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
+                examineListView.notifyLoadResult(responseListNode.isMore != 0);
+                loadingAnimations[1].stop();
+                loadingViews[1].setVisibility(View.GONE);
+                if (examineMembers.isEmpty()) {
+                    emptyTips[1].setVisibility(View.VISIBLE);
+                }
+                else {
+                    examineListView.setVisibility(View.VISIBLE);
+                    examineListAdapter.notifyDataSetChanged();
+                }
+                break;
+            case TASK_APPEND_EXAMINE_MEMBERS:
+                examineMembers.addAll(Arrays.asList(JsonNode.toObject(responseListNode.items, AdminRoleGroupNode[].class)));
+                examineListView.notifyLoadResult(responseListNode.isMore != 0);
+                examineListAdapter.notifyDataSetChanged();
                 break;
         }
     }

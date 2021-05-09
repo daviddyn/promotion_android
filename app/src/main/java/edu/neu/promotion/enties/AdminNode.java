@@ -11,6 +11,7 @@ public class AdminNode implements Serializable {
     public String adminSex;
     public String adminPhone;
     public String adminCollege;
+    public DictionaryItemNode adminCollegeObj;
     public String adminPosition;
     public String adminDegree;
     public String adminIdentityNumber;

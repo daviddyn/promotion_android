@@ -21,7 +21,8 @@ public final class ServerInterfaces {
     public static final int RESULT_CODE_USER_HAS_BEEN_FREEZE = 503;
     public static final int RESULT_CODE_VERIFY_CODE_ERROR = 509;
 
-    private static final String baseUrl = "https://apps.neu.edu.qizhiqiang.com/promotion";
+    //private static final String baseUrl = "https://apps.neu.edu.qizhiqiang.com/promotion";
+    private static final String baseUrl = "http://192.168.3.3/promotion";
 
     public static ServerResponseNode analyseCommonContent(ServerInvoker.InvokeResult invokeResult) {
         return JsonNode.toObject(((ServerInvoker.InvokeResult) invokeResult).getContent(), ServerResponseNode.class);
@@ -82,6 +83,22 @@ public final class ServerInterfaces {
                 new HttpContentJsonReceiver(),
                 null
         );
+    }
+
+    public static final class Power {
+
+        public static ServerInvoker getPowerList(String token) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            return new ServerInvoker(
+                    baseUrl + "/power/getPowerListApp",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
     }
 
     public static final class Role {
@@ -180,6 +197,23 @@ public final class ServerInterfaces {
                     extraHeaders
             );
         }
+
+        public static ServerInvoker getNoCheckAdminRoleGroupBySearch(String token, int currentPage, int itemsPerPage) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            JsonNode admin = JsonNode.createEmptyObject();
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("admin", admin);
+            requestNode.params.setField("currentPage", currentPage);
+            requestNode.params.setField("showCount", itemsPerPage);
+            return new ServerInvoker(
+                    baseUrl + "/role/getNoCheckAdminRoleGroupBySearch",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
     }
 
     public static final class Group {
@@ -217,7 +251,9 @@ public final class ServerInterfaces {
 
     public static final class Project {
 
-        public static ServerInvoker getProjectBySearch(String projectAdmin, String projectGroup, String projectName, String projectState, int itemsPerPage, int currentPage) {
+        public static ServerInvoker getProjectBySearch(String token, String projectAdmin, String projectGroup, String projectName, String projectState, int currentPage, int itemsPerPage) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
             JsonNode project = JsonNode.createEmptyObject();
             project.setField("projectAdmin", projectAdmin);
             project.setField("projectGroup", projectGroup);
@@ -226,13 +262,31 @@ public final class ServerInterfaces {
             ServerRequestNode requestNode = new ServerRequestNode();
             requestNode.params = JsonNode.createEmptyObject();
             requestNode.params.setField("project", project);
-            requestNode.params.setField("showCount", project);
-            requestNode.params.setField("currentPage", project);
+            requestNode.params.setField("currentPage", currentPage);
+            requestNode.params.setField("showCount", itemsPerPage);
             return new ServerInvoker(
                     baseUrl + "/project/getProjectBySearch",
                     new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
                     new HttpContentJsonReceiver(),
-                    null
+                    extraHeaders
+            );
+        }
+
+        public static ServerInvoker getProjectByPreset(String token, boolean isMyProject, boolean isMyJoinProject, boolean isNotEditState, int currentPage, int itemsPerPage) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("isMyProject", isMyProject);
+            requestNode.params.setField("isMyJoinProject", isMyJoinProject);
+            requestNode.params.setField("isNotEditState", isNotEditState);
+            requestNode.params.setField("currentPage", currentPage);
+            requestNode.params.setField("showCount", itemsPerPage);
+            return new ServerInvoker(
+                    baseUrl + "/project/getProjectBySearchApp",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
             );
         }
 

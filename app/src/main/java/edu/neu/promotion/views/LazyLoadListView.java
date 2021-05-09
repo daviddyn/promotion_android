@@ -16,6 +16,10 @@ import edu.neu.promotion.R;
 
 public class LazyLoadListView extends ListView {
 
+    public interface OnLoadListener {
+        void onLoad();
+    }
+
     public LazyLoadListView(Context context) {
         super(context);
         construct();
@@ -39,6 +43,8 @@ public class LazyLoadListView extends ListView {
     private ImageView loadingIconView;
     private AnimationDrawable loadingAnimation;
     private TextView tipTextView;
+
+    private OnLoadListener onLoadListener;
 
     private boolean footerViewInVision;
     private int state;
@@ -71,6 +77,9 @@ public class LazyLoadListView extends ListView {
                         if (state == STATE_NONE) {
                             state = STATE_LOADING;
                             //TODO: 通知加载
+                            if (onLoadListener != null) {
+                                onLoadListener.onLoad();
+                            }
                         }
                     }
                 }
@@ -101,5 +110,9 @@ public class LazyLoadListView extends ListView {
         else {
             state = STATE_NONE;
         }
+    }
+
+    public void setOnLoadListener(OnLoadListener onLoadListener) {
+        this.onLoadListener = onLoadListener;
     }
 }

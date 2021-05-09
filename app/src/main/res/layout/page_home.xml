@@ -28,95 +28,12 @@
                 android:layout_height="wrap_content" />
 
             <edu.neu.promotion.views.FixedGridLayout
+                android:id="@+id/functionGridView"
                 app:columnCount="4"
                 app:gridHeight="96dp"
                 android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/projectButtonArea"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp">
-
-                    <ImageView
-                        android:id="@+id/projectButton"
-                        android:layout_width="@dimen/function_item_dimen"
-                        android:layout_height="@dimen/function_item_dimen"
-                        android:background="@drawable/button_function2_press"
-                        android:scaleType="center"
-                        android:src="@drawable/ic_function_project"
-                        app:tint="@color/text_button_primary" />
-
-                    <TextView
-                        android:text="@string/home_project"
-                        android:layout_marginTop="6dp"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/function_text_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/memberButtonArea"
-                    app:layout_columnSpan="1"
-                    android:gravity="center"
-                    android:background="@drawable/ripple"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp">
-
-                    <ImageView
-                        android:id="@+id/memberButton"
-                        android:scaleType="center"
-                        android:background="@drawable/button_function1_press"
-                        android:src="@drawable/ic_function_member"
-                        android:layout_width="@dimen/function_item_dimen"
-                        android:layout_height="@dimen/function_item_dimen"
-                        app:tint="@color/text_button_primary" />
-
-                    <TextView
-                        android:text="@string/home_my_member"
-                        android:layout_marginTop="6dp"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/function_text_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/staticButtonArea"
-                    app:layout_columnSpan="1"
-                    android:gravity="center"
-                    android:background="@drawable/ripple"
-                    android:orientation="vertical"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp">
-
-                    <ImageView
-                        android:id="@+id/staticButton"
-                        android:scaleType="center"
-                        android:background="@drawable/button_primary_press"
-                        android:src="@drawable/ic_function_static"
-                        android:layout_width="@dimen/function_item_dimen"
-                        android:layout_height="@dimen/function_item_dimen"
-                        app:tint="@color/text_button_primary" />
-
-                    <TextView
-                        android:text="@string/home_static"
-                        android:layout_marginTop="6dp"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/function_text_size"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </edu.neu.promotion.views.FixedGridLayout>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

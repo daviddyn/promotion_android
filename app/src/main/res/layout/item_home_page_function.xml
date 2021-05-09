@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/functionIcon"
+        app:tint="@color/text_button_primary"
+        android:layout_width="@dimen/function_item_dimen"
+        android:layout_height="@dimen/function_item_dimen"
+        android:scaleType="center" />
+
+    <TextView
+        android:id="@+id/functionName"
+        android:layout_marginTop="6dp"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/function_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -257,7 +257,6 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
                 notifyParent(0);
                 break;
         }
-
     }
 
     @Override
