@@ -33,7 +33,6 @@
 
     <!-- 审核 -->
     <dimen name="examine_icon_dimen">12dp</dimen>
-    <dimen name="examine_icon_margin">18dp</dimen>
 
     <!-- 带索引的列表 -->
     <dimen name="list_index_item_height">42dp</dimen>

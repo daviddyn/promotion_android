@@ -37,7 +37,33 @@ public class AdminRoleGroupExamineFiller implements EntityFiller<AdminRoleGroupN
         nameCardView.setBackground(ResourcesCompat.getDrawable(resources, R.drawable.button_gray_normal, null));
         nameCardView.setText(CoupleNames.getInstance(resources).getShortName(entity.adminObj.adminName));
         nameView.setText(entity.adminObj.adminName);
-        departmentView.setText(entity.checkStateObj.dictionaryName);
+        boolean hasContent = false;
+        departmentView.setText("");
+        if (entity.adminObj.adminCollegeObj != null) {
+            hasContent = true;
+            departmentView.append(entity.adminObj.adminCollegeObj.dictionaryName);
+        }
+        if (entity.adminObj.adminPosition != null && !entity.adminObj.adminPosition.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminObj.adminPosition);
+        }
+        if (entity.adminObj.isStudent() && entity.adminObj.adminDegree != null && !entity.adminObj.adminDegree.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminObj.adminDegree);
+        }
+        if (!hasContent) {
+            departmentView.setText("- -");
+        }
         stateTextView.setVisibility(entity.canCheck ? View.VISIBLE : View.GONE);
     }
 

@@ -85,20 +85,17 @@ public final class ServerInterfaces {
         );
     }
 
-    public static final class Power {
-
-        public static ServerInvoker getPowerList(String token) {
-            HashMap<String, String> extraHeaders = new HashMap<>();
-            extraHeaders.put("Token", token);
-            ServerRequestNode requestNode = new ServerRequestNode();
-            requestNode.params = JsonNode.createEmptyObject();
-            return new ServerInvoker(
-                    baseUrl + "/power/getPowerListApp",
-                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
-                    new HttpContentJsonReceiver(),
-                    extraHeaders
-            );
-        }
+    public static ServerInvoker getMyselfMessage(String token) {
+        HashMap<String, String> extraHeaders = new HashMap<>();
+        extraHeaders.put("Token", token);
+        ServerRequestNode requestNode = new ServerRequestNode();
+        requestNode.params = JsonNode.createEmptyObject();
+        return new ServerInvoker(
+                baseUrl + "/getMyselfMessage",
+                new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                new HttpContentJsonReceiver(),
+                extraHeaders
+        );
     }
 
     public static final class Role {
@@ -214,6 +211,22 @@ public final class ServerInterfaces {
                     extraHeaders
             );
         }
+
+        public static ServerInvoker getAdminRoleTimeList(String token, String adminRoleGroupId) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            JsonNode adminRoleGroup = JsonNode.createEmptyObject();
+            adminRoleGroup.setField("adminRoleGroupId", adminRoleGroupId);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("adminRoleGroup", adminRoleGroup);
+            return new ServerInvoker(
+                    baseUrl + "/role/getAdminRoleTimeList",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
     }
 
     public static final class Group {
@@ -290,5 +303,21 @@ public final class ServerInterfaces {
             );
         }
 
+    }
+
+    public static final class Power {
+
+        public static ServerInvoker getPowerList(String token) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            return new ServerInvoker(
+                    baseUrl + "/power/getPowerListApp",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
     }
 }

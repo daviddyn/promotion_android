@@ -37,11 +37,32 @@ public class AdminEntityFiller implements EntityFiller<AdminNode> {
         else {
             nameView.setText(entity.adminName);
         }
-        if (entity.adminCollege.isEmpty()) {
-            departmentView.setText(entity.adminPosition);
+        boolean hasContent = false;
+        departmentView.setText("");
+        if (entity.adminCollegeObj != null) {
+            hasContent = true;
+            departmentView.append(entity.adminCollegeObj.dictionaryName);
         }
-        else {
-            departmentView.setText(entity.adminCollegeObj.dictionaryName + " - " + entity.adminPosition);
+        if (entity.adminPosition != null && !entity.adminPosition.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminPosition);
+        }
+        if (entity.isStudent() && entity.adminDegree != null && !entity.adminDegree.isEmpty()) {
+            if (hasContent) {
+                departmentView.append(" - ");
+            }
+            else {
+                hasContent = true;
+            }
+            departmentView.append(entity.adminDegree);
+        }
+        if (!hasContent) {
+            departmentView.setText("- -");
         }
     }
 

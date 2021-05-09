@@ -5,15 +5,13 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-import edu.neu.promotion.R;
 import edu.neu.promotion.components.BaseActivity;
-import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.views.PasswordEditText;
 import edu.neu.promotion.views.StepView;
 import edu.neu.promotion.views.VibratingTextView;
 
-public class RegisterPasswordPage extends Page {
+public class NewPasswordPage extends TokenRunNetworkTaskPage {
 
     private StepView passwordStepper;
     private PasswordEditText passwordEdit;
@@ -24,7 +22,7 @@ public class RegisterPasswordPage extends Page {
 
     private int currentStep;
 
-    public RegisterPasswordPage(PageManager pageManager, Object... args) {
+    public NewPasswordPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
     }
 

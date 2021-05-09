@@ -52,7 +52,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(this, SelectRoleActivity.class), 2);
                 break;
             case "normal":
-                //TODO: 进入主界面，requestCode=3
                 startActivityForResult(new Intent(this, MainActivity.class), 3);
                 break;
             default:
@@ -80,7 +79,6 @@ public class WelcomeActivity extends AppCompatActivity {
                         startActivityForResult(new Intent(this, LoginRegisterActivity.class), 1);
                         break;
                     case RESULT_OK:
-                        //TODO: 进入主界面，requestCode=3
                         startActivityForResult(new Intent(this, MainActivity.class), 3);
                         break;
                     default:

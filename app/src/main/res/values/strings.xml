@@ -18,6 +18,7 @@
     <string name="myself">（我自己）</string>
     <string name="search">搜索</string>
     <string name="system_notification">系统通知</string>
+    <string name="scan">扫一扫</string>
     <string name="logout">退出登录</string>
     <string name="settings">设置</string>
     <string name="network_retry">网络错误，请点击此处重试</string>
@@ -82,6 +83,10 @@
     <string name="register_verify_title">请输入验证码</string>
     <string name="register_verify_change">更换验证码</string>
 
+    <string name="change_password_title">修改密码</string>
+    <string name="change_password_original">原始密码</string>
+    <string name="change_password_original_input_hint">请输入原始密码</string>
+
     <string name="select_role_title">欢迎您，%s！</string>
     <string name="select_role_subtitle_normal">选择一个角色以继续</string>
     <string name="select_role_subtitle_no_role">您还没有任何角色，请点击下方按钮申请</string>
@@ -108,6 +113,7 @@
     <string name="view_role_examine_state_cancel">取消申请</string>
     <string name="view_role_examine_state_delete">删除申请记录</string>
     <string name="view_role_examine_state_group">申请组织：%s</string>
+    <string name="view_role_examine_state_at">申请于 %s</string>
     <string name="view_role_examine_state_role">申请角色：%s</string>
     <string name="view_role_examine_state_cancel_confirm_title">取消申请</string>
     <string name="view_role_examine_state_cancel_confirm_message">此后若想使用此角色，您需要重新发出申请。</string>

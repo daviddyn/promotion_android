@@ -21,4 +21,7 @@ public class AdminNode implements Serializable {
     public String code;
     public String aescode;
 
+    public boolean isStudent() {
+        return "学生".equals(adminPosition);
+    }
 }

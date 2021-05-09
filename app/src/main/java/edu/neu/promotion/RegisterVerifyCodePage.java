@@ -212,6 +212,8 @@ public class RegisterVerifyCodePage extends RunNetworkTaskPage {
                         break;
                     default:
                         super.onTaskResult(requestCode, result);
+                        loadingDialog.cancel();
+                        loadImage();
                         break;
                 }
                 break;

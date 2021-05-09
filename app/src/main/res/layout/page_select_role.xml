@@ -98,10 +98,10 @@
 
         <LinearLayout
             android:id="@+id/newListView"
-            android:layout_marginTop="@dimen/navigate_content_elem_margin"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:orientation="vertical" />
 
     </LinearLayout>
 
