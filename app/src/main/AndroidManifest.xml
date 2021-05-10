@@ -33,8 +33,12 @@
         <activity android:name=".activities.ProjectActivity" />
         <activity android:name=".activities.MemberActivity" />
         <activity android:name=".activities.ChangePasswordActivity" />
-        <activity android:name=".activities.UserInfoActivity" />
+        <activity android:name=".activities.MemberInfoActivity" />
         <activity android:name=".activities.ExamineUserInfoActivity" />
+        <activity android:name=".activities.SearchMemberActivity"
+            android:theme="@style/FadeActivityTheme"/>
+        <activity android:name=".activities.SearchMemberResultActivity" />
+
     </application>
 
 </manifest>

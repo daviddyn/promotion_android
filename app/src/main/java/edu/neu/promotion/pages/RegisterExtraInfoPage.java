@@ -58,7 +58,7 @@ public class RegisterExtraInfoPage extends RunNetworkTaskPage {
         super.onCreate();
         setActionbarStyle(BaseActivity.ACTIONBAR_STYLE_NO_TITLE);
 
-        runTask(ServerInterfaces.Dictionary.getDictionaryItems("COLLEGE"), TASK_GET_COLLEGE);
+        runTask(ServerInterfaces.Dictionary.getDictionaryItems(ServerInterfaces.Dictionary.DICTIONARY_TYPE_COLLEGE), TASK_GET_COLLEGE);
     }
 
     private void loadMainViews() {

@@ -8,6 +8,7 @@ import com.davidsoft.utils.JsonNode;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
+import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.ServerRequestNode;
 import edu.neu.promotion.enties.ServerResponseNode;
 
@@ -175,12 +176,16 @@ public final class ServerInterfaces {
             );
         }
 
-        public static ServerInvoker getAdminRoleGroupBySearch(String token, String adminAccount, String adminName, String checkState, int currentPage, int itemsPerPage) {
+        public static ServerInvoker getAdminRoleGroupBySearch(String token, AdminNode adminInfo, String checkState, int currentPage, int itemsPerPage) {
             HashMap<String, String> extraHeaders = new HashMap<>();
             extraHeaders.put("Token", token);
-            JsonNode admin = JsonNode.createEmptyObject();
-            admin.setField("adminAccount", adminAccount);
-            admin.setField("adminName", adminName);
+            JsonNode admin;
+            if (adminInfo == null) {
+                admin = JsonNode.createEmptyObject();
+            }
+            else {
+                admin = JsonNode.valueOf(adminInfo);
+            }
             admin.setField("checkState", checkState);
             ServerRequestNode requestNode = new ServerRequestNode();
             requestNode.params = JsonNode.createEmptyObject();
@@ -280,6 +285,9 @@ public final class ServerInterfaces {
     }
 
     public static final class Dictionary {
+
+        public static final String DICTIONARY_TYPE_COLLEGE = "COLLEGE";
+        public static final String DICTIONARY_TYPE_ADMIN_CHECK_STATE = "ADMIN_CHECK_STATE";
 
         public static ServerInvoker getDictionaryItems(String dictionaryType) {
             ServerRequestNode requestNode = new ServerRequestNode();

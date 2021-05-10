@@ -101,4 +101,14 @@
         <item name="android:windowEnterAnimation">@anim/dialog_show_center</item>
         <item name="android:windowExitAnimation">@anim/dialog_hide_center</item>
     </style>
+
+    <style name="FadeActivityTheme" parent="Theme.AppTheme">
+        <item name="android:windowAnimationStyle">@style/FadeActivityTheme.Animation</item>
+    </style>
+
+    <style name="FadeActivityTheme.Animation" parent="Theme.AppTheme">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_fade_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_fade_out</item>
+    </style>
+
 </resources>

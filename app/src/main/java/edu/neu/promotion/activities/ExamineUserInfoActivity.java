@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageActivity;
+import edu.neu.promotion.components.RunNetworkTaskPage;
 import edu.neu.promotion.pages.ExamineUserInfoPage;
 
 public class ExamineUserInfoActivity extends PageActivity {
@@ -32,6 +33,10 @@ public class ExamineUserInfoActivity extends PageActivity {
         super.onPageNotify(who, notifyCode, args);
         Intent data;
         switch (notifyCode) {
+            case RunNetworkTaskPage.RESULT_NEED_LOGIN:
+                setResult(RESULT_NEED_FINISH);
+                finish();
+                break;
             case ExamineUserInfoPage.RESULT_ACCEPT:
                 data = new Intent();
                 data.putExtra(RESULT_EXTRA_NEW_CHECK_STATE, ((String) args[0]));

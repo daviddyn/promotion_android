@@ -13,11 +13,11 @@ import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminRoleGroupNode;
 import edu.neu.promotion.utils.CoupleNames;
 
-public class UserInfoPage extends Page {
+public class MemberInfoPage extends Page {
 
     private final AdminRoleGroupNode adminInfo;
 
-    public UserInfoPage(PageManager pageManager, Object... args) {
+    public MemberInfoPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
         adminInfo = (AdminRoleGroupNode) args[0];
     }
@@ -26,9 +26,9 @@ public class UserInfoPage extends Page {
     protected void onCreate() {
         super.onCreate();
 
-        setTitle(R.string.user_info_title);
+        setTitle(R.string.member_info_title);
 
-        setContentView(R.layout.page_user_info);
+        setContentView(R.layout.page_member_info);
         ((TextView) findViewById(R.id.nameView)).setText(adminInfo.adminObj.adminName);
         TextView textView = findViewById(R.id.nameCardView);
         textView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminObj.adminName));

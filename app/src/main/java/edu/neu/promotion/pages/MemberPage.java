@@ -1,5 +1,6 @@
 package edu.neu.promotion.pages;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.TypedValue;
@@ -19,20 +20,23 @@ import com.davidsoft.utils.JsonNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import edu.neu.promotion.R;
 import edu.neu.promotion.ServerInterfaces;
 import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.StorageManager;
 import edu.neu.promotion.activities.ExamineUserInfoActivity;
-import edu.neu.promotion.activities.UserInfoActivity;
+import edu.neu.promotion.activities.MemberInfoActivity;
+import edu.neu.promotion.activities.SearchMemberActivity;
+import edu.neu.promotion.activities.SearchMemberResultActivity;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleGroupNode;
 import edu.neu.promotion.enties.ServerResponseListNode;
 import edu.neu.promotion.enties.ServerResponseNode;
-import edu.neu.promotion.fillers.AdminRoleGroupAdminFiller;
-import edu.neu.promotion.fillers.AdminRoleGroupExamineFiller;
+import edu.neu.promotion.fillers.AdminRoleGroupEntityFiller;
 import edu.neu.promotion.views.EntityAdapter;
 import edu.neu.promotion.views.LazyLoadListView;
 import edu.neu.promotion.views.PageTabBarView;
@@ -47,6 +51,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
     private static final int TASK_APPEND_EXAMINE_MEMBERS = 4;
 
     private static final int ACTIVITY_REQUEST_VIEW_EXAMINE = 1;
+    private static final int ACTIVITY_REQUEST_SEARCH_MEMBER = 2;
 
     private final AdminNode myAdminInfo;
 
@@ -59,7 +64,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
     private EntityAdapter<AdminRoleGroupNode> examineListAdapter;
     private AnimationDrawable[] loadingAnimations;
     private ImageView[] loadingViews;
-    private TextView emptyTips[];
+    private TextView[] emptyTips;
     private FrameLayout[] pages;
     private int[] mainViewLoadState;
 
@@ -85,7 +90,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         formalListView = new LazyLoadListView(getContext());
         formalListView.setDividerHeight(1);
         formalListView.setOnLoadListener(() -> runTask(
-                ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), null, "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                 Integer.MAX_VALUE,
                 TASK_APPEND_FORMAL_MEMBERS
         ));
@@ -94,11 +99,11 @@ public class MemberPage extends TokenRunNetworkTaskPage {
             if (myAdminInfo.adminId.equals(node.adminId)) {
                 return;
             }
-            Intent intent = new Intent(getContext(), UserInfoActivity.class);
-            intent.putExtra(UserInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
+            Intent intent = new Intent(getContext(), MemberInfoActivity.class);
+            intent.putExtra(MemberInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
             startActivity(intent);
         });
-        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupAdminFiller.class, myAdminInfo.adminId);
+        formalListAdapter = new EntityAdapter<>(formalMembers, AdminRoleGroupEntityFiller.class, myAdminInfo.adminId);
         formalListView.setAdapter(formalListAdapter);
         formalListView.setVisibility(View.GONE);
         examineListView = new LazyLoadListView(getContext());
@@ -115,7 +120,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
             operatingPosition = position;
             startActivityForResult(intent, ACTIVITY_REQUEST_VIEW_EXAMINE);
         });
-        examineListAdapter = new EntityAdapter<>(examineMembers, AdminRoleGroupExamineFiller.class);
+        examineListAdapter = new EntityAdapter<>(examineMembers, AdminRoleGroupEntityFiller.class);
         examineListView.setAdapter(examineListAdapter);
         examineListView.setVisibility(View.GONE);
 
@@ -216,7 +221,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                     mainViewLoadState[0] = 1;
                     loadingAnimations[0].start();
                     runTask(
-                            ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), "", "", "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            ServerInterfaces.Role.getAdminRoleGroupBySearch(getToken(), null, "admin_check_state_5", formalMembers.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                             Integer.MAX_VALUE,
                             TASK_GET_FORMAL_MEMBERS
                     );
@@ -297,13 +302,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                 switch (resultCode) {
                     case ExamineUserInfoActivity.RESULT_ACCEPT:
                         AdminRoleGroupNode node = examineMembers.get(operatingPosition);
-                        String newCheckState = data.getStringExtra(ExamineUserInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
-                        if (newCheckState.isEmpty()) {
-                            node.checkStateObj.dictionaryName = "已移交至更高级别的用户审核";
-                        }
-                        else {
-                            node.checkStateObj.dictionaryName = newCheckState;
-                        }
+                        node.checkStateObj.dictionaryName = data.getStringExtra(ExamineUserInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
                         node.canCheck = false;
                         examineListAdapter.notifyDataSetChanged();
                         break;
@@ -312,6 +311,32 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                         examineListAdapter.notifyDataSetChanged();
                         break;
                 }
+                break;
+            case ACTIVITY_REQUEST_SEARCH_MEMBER:
+                if (resultCode == Activity.RESULT_OK) {
+                    HashSet<String> deniedIds = new HashSet<>(data.getStringArrayListExtra(SearchMemberResultActivity.RESULT_EXTRA_DENIED_IDS));
+                    com.davidsoft.compact.ArrayList.removeIf(examineMembers, n -> deniedIds.contains(n.adminId));
+                    ArrayList<String> acceptIds = data.getStringArrayListExtra(SearchMemberResultActivity.RESULT_EXTRA_ACCEPT_IDS);
+                    ArrayList<String> newCheckStates = data.getStringArrayListExtra(SearchMemberResultActivity.RESULT_EXTRA_NEW_CHECK_STATES);
+                    HashMap<String, String> accepts = new HashMap<>();
+                    for (int i = 0; i < acceptIds.size(); i++) {
+                        accepts.put(acceptIds.get(i), newCheckStates.get(i));
+                    }
+                    for (AdminRoleGroupNode n : examineMembers) {
+                        String newCheckState = accepts.get(n.adminId);
+                        if (newCheckState != null) {
+                            n.checkStateObj.dictionaryName = newCheckState;
+                            n.canCheck = false;
+                        }
+                    }
+                }
+                break;
         }
+    }
+
+    @Override
+    protected void onActionbarButtonClick(int position, View viewForAnchor) {
+        super.onActionbarButtonClick(position, viewForAnchor);
+        startActivityForResult(new Intent(getContext(), SearchMemberActivity.class), ACTIVITY_REQUEST_SEARCH_MEMBER);
     }
 }

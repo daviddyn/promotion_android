@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/items_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/card"
+        android:translationZ="3dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_name"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:id="@+id/nameEdit"
+                    android:hint="@string/unspecified"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_department"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/departmentEdit"
+                    app:drawableEndCompat="@drawable/ic_choose"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@drawable/ripple"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_level"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/degreeEdit"
+                    app:drawableEndCompat="@drawable/ic_choose"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@drawable/ripple"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_account"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:id="@+id/accountEdit"
+                    android:hint="@string/unspecified"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_phone"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:id="@+id/phoneEdit"
+                    android:hint="@string/unspecified"
+                    android:inputType="phone"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="@string/member_search_member_state"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/checkStateEdit"
+                    app:drawableEndCompat="@drawable/ic_choose"
+                    android:layout_weight="1.0"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:background="@drawable/ripple"
+                    android:padding="12dp"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_secondary" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/navigate_content_margin"
+            android:layout_marginBottom="@dimen/navigate_content_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:paddingLeft="@dimen/button_padding_horizontal"
+            android:paddingRight="@dimen/button_padding_horizontal"
+            android:paddingTop="@dimen/button_padding_vertical"
+            android:paddingBottom="@dimen/button_padding_vertical"
+            android:background="@drawable/button_primary"
+            android:text="@string/search"
+            android:textSize="@dimen/button_text_size"
+            android:textColor="@color/text_button_primary"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>
