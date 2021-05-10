@@ -101,7 +101,7 @@ public class SelfPage extends TokenRunNetworkTaskPage {
         nameCardView = findViewById(R.id.nameCardView);
         nameCardView.setOnClickListener(onClickListener);
         nameView = findViewById(R.id.nameView);
-        idView = findViewById(R.id.idView);
+        idView = findViewById(R.id.rightSubTextView);
         roleIconView = findViewById(R.id.roleIconView);
         roleNameView = findViewById(R.id.roleNameView);
         selectRoleButton = findViewById(R.id.selectRoleButton);

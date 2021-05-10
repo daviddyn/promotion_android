@@ -79,9 +79,7 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
             }
         };
 
-        //TODO: 重新获取时间线
-
-        loadMainView();
+        runTask(ServerInterfaces.Role.getAdminRoleTimeList(getToken(), adminInfo.adminRoleGroupId), TASK_GET_TIMELINE);
     }
 
     private void loadMainView() {
@@ -276,7 +274,6 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
                 break;
             case TASK_REFRESH_TIMELINE:
                 processTimeListResult(JsonNode.toObject(responseNode.object, TimeListNode[].class));
-                notifyParent(RESULT_ACCEPT, timeList[0].text);
                 refreshViews();
                 break;
             case TASK_ACCEPT:
@@ -286,6 +283,7 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
                 adminInfo.canCheck = false;
                 refreshViews();
                 //TODO: 重新获取时间线
+                runTask(ServerInterfaces.Role.getAdminRoleTimeList(getToken(), adminInfo.adminRoleGroupId), TASK_REFRESH_TIMELINE);
                 break;
             case TASK_DENIED:
                 Toast.makeText(getContext(), R.string.examine_denied_success, Toast.LENGTH_SHORT).show();

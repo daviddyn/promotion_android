@@ -329,6 +329,7 @@ public class MemberPage extends TokenRunNetworkTaskPage {
                             n.canCheck = false;
                         }
                     }
+                    examineListAdapter.notifyDataSetChanged();
                 }
                 break;
         }

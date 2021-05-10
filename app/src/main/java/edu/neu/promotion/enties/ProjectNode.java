@@ -1,7 +1,5 @@
 package edu.neu.promotion.enties;
 
-import java.util.Date;
-
 public class ProjectNode {
 
     public String projectId;

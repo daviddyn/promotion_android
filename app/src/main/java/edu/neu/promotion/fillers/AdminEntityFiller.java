@@ -18,15 +18,15 @@ public class AdminEntityFiller implements EntityFiller<AdminNode> {
 
     private TextView nameCardView;
     private TextView nameView;
-    private TextView departmentView;
+    private TextView leftSubTextView;
     private ImageView chooseIcon;
 
     @Override
     public View generateView(Context context) {
-        View rootView = LayoutInflater.from(context).inflate(R.layout.item_admin, null);
+        View rootView = LayoutInflater.from(context).inflate(R.layout.item_member, null);
         nameCardView = rootView.findViewById(R.id.nameCardView);
         nameView = rootView.findViewById(R.id.nameView);
-        departmentView = rootView.findViewById(R.id.departmentView);
+        leftSubTextView = rootView.findViewById(R.id.leftSubTextView);
         chooseIcon = rootView.findViewById(R.id.chooseIcon);
         return rootView;
     }
@@ -45,27 +45,27 @@ public class AdminEntityFiller implements EntityFiller<AdminNode> {
             chooseIcon.setVisibility(View.VISIBLE);
         }
         boolean hasContent = false;
-        departmentView.setText("");
+        leftSubTextView.setText("");
         if (entity.adminCollegeObj != null) {
             hasContent = true;
-            departmentView.append(entity.adminCollegeObj.dictionaryName);
+            leftSubTextView.append(entity.adminCollegeObj.dictionaryName);
         }
         if (entity.adminPosition != null && !entity.adminPosition.isEmpty()) {
             if (hasContent) {
-                departmentView.append(" - ");
+                leftSubTextView.append(" - ");
             }
             else {
                 hasContent = true;
             }
             if (entity.isStudent() && entity.adminDegree != null && !entity.adminDegree.isEmpty()) {
-                departmentView.append(entity.adminDegree);
+                leftSubTextView.append(entity.adminDegree);
             }
             else {
-                departmentView.append(entity.adminPosition);
+                leftSubTextView.append(entity.adminPosition);
             }
         }
         if (!hasContent) {
-            departmentView.setText(R.string.user_unknown);
+            leftSubTextView.setText(R.string.user_unknown);
         }
     }
 

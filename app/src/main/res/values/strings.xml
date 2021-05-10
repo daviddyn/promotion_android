@@ -24,6 +24,15 @@
     <string name="unspecified">不限</string>
     <string name="network_retry">网络错误，请点击此处重试</string>
 
+    <string name="time_moments_ago">刚刚</string>
+    <string name="time_minutes_ago">%d分钟前</string>
+    <string name="time_hours_ago">%d小时前</string>
+    <string name="time_format_hour_minute">H:mm</string>
+    <string name="time_format_yesterday_hour_minute">昨天 H:mm</string>
+    <string name="time_format_yesteryesterday_hour_minute">前天 H:mm</string>
+    <string name="time_format_month_date_hour_minute">M月d日 H:mm</string>
+    <string name="time_format_year_month_date_hour_minute">y年M月d日 H:mm</string>
+
     <string name="user_name_male">%s先生</string>
     <string name="user_name_female">%s女士</string>
     <string name="user_name_myself">%s（我自己）</string>
@@ -173,5 +182,5 @@
     <string name="project_all">全部计划</string>
     <string name="project_participate_in">我参与的</string>
     <string name="project_my_create">我创建的</string>
-
+    <string name="project_creator_and_time">%s</string>
 </resources>
