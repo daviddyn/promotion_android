@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppTheme">
 
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,17 +23,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginRegisterActivity" />
-        <activity android:name=".SelectRoleActivity" />
-        <activity android:name=".ViewRoleExamineStateActivity" />
-        <activity android:name=".QueryDictionaryActivity" />
-        <activity android:name=".CreateRoleActivity" />
-        <activity android:name=".SearchSelectItemActivity" />
-        <activity android:name=".WebActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ProjectActivity" />
-        <activity android:name=".MemberActivity" />
-        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".activities.LoginRegisterActivity" />
+        <activity android:name=".activities.SelectRoleActivity" />
+        <activity android:name=".activities.ViewRoleExamineStateActivity" />
+        <activity android:name=".activities.CreateRoleActivity" />
+        <activity android:name=".activities.SearchSelectItemActivity" />
+        <activity android:name=".activities.WebActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.ProjectActivity" />
+        <activity android:name=".activities.MemberActivity" />
+        <activity android:name=".activities.ChangePasswordActivity" />
+        <activity android:name=".activities.UserInfoActivity" />
+        <activity android:name=".activities.ExamineUserInfoActivity" />
     </application>
 
 </manifest>

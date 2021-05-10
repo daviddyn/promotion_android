@@ -20,7 +20,14 @@
             android:textColor="@color/text_selectable_primary"
             android:background="@drawable/ripple"
             android:textSize="@dimen/top_navigate_text_size"
-            android:text="全部计划" />
+            android:text="@string/project_all" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/split_bar"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
 
         <CheckedTextView
             android:id="@+id/inProjectButton"
@@ -33,7 +40,14 @@
             android:textColor="@color/text_selectable_primary"
             android:background="@drawable/ripple"
             android:textSize="@dimen/top_navigate_text_size"
-            android:text="我参与的" />
+            android:text="@string/project_participate_in" />
+
+        <View
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/split_bar"
+            android:layout_width="1dp"
+            android:layout_height="match_parent" />
 
         <CheckedTextView
             android:id="@+id/createProjectButton"
@@ -46,7 +60,7 @@
             android:textColor="@color/text_selectable_primary"
             android:background="@drawable/ripple"
             android:textSize="@dimen/top_navigate_text_size"
-            android:text="我创建的" />
+            android:text="@string/project_my_create" />
 
     </LinearLayout>
 

@@ -21,8 +21,8 @@ public final class ServerInterfaces {
     public static final int RESULT_CODE_USER_HAS_BEEN_FREEZE = 503;
     public static final int RESULT_CODE_VERIFY_CODE_ERROR = 509;
 
-    //private static final String baseUrl = "https://apps.neu.edu.qizhiqiang.com/promotion";
-    private static final String baseUrl = "http://192.168.3.3/promotion";
+    private static final String baseUrl = "https://apps.neu.edu.qizhiqiang.com/promotion";
+    //private static final String baseUrl = "http://192.168.3.3/promotion";
 
     public static ServerResponseNode analyseCommonContent(ServerInvoker.InvokeResult invokeResult) {
         return JsonNode.toObject(((ServerInvoker.InvokeResult) invokeResult).getContent(), ServerResponseNode.class);
@@ -227,6 +227,39 @@ public final class ServerInterfaces {
                     extraHeaders
             );
         }
+
+        public static ServerInvoker checkRole(String token, String adminRoleGroupId) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            JsonNode adminRoleGroup = JsonNode.createEmptyObject();
+            adminRoleGroup.setField("adminRoleGroupId", adminRoleGroupId);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("adminRoleGroup", adminRoleGroup);
+            return new ServerInvoker(
+                    baseUrl + "/role/checkRole",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
+
+        public static ServerInvoker uncheckRole(String token, String adminRoleGroupId) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            JsonNode adminRoleGroup = JsonNode.createEmptyObject();
+            adminRoleGroup.setField("adminRoleGroupId", adminRoleGroupId);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            requestNode.params.setField("adminRoleGroup", adminRoleGroup);
+            return new ServerInvoker(
+                    baseUrl + "/role/unCheckRole",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
+
     }
 
     public static final class Group {

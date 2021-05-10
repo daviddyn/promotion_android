@@ -15,16 +15,19 @@
     <string name="loading">加载中…</string>
     <string name="male">先生</string>
     <string name="female">女士</string>
-    <string name="myself">（我自己）</string>
     <string name="search">搜索</string>
     <string name="system_notification">系统通知</string>
     <string name="scan">扫一扫</string>
     <string name="logout">退出登录</string>
     <string name="settings">设置</string>
+    <string name="call">呼叫</string>
     <string name="network_retry">网络错误，请点击此处重试</string>
 
-    <string name="name_male">%s先生</string>
-    <string name="name_female">%s女士</string>
+    <string name="user_name_male">%s先生</string>
+    <string name="user_name_female">%s女士</string>
+    <string name="user_name_myself">%s（我自己）</string>
+    <string name="user_unknown">暂无信息</string>
+    <string name="user_unspecified">（未设置）</string>
 
     <string name="degree_undergraduate">本科</string>
     <string name="degree_graduate">硕士</string>
@@ -138,4 +141,22 @@
     <string name="member_formal">正式组员</string>
     <string name="member_examining">审核中组员</string>
     <string name="member_can_check">去审核</string>
+
+    <string name="project_title">宣传计划</string>
+    <string name="project_all">全部计划</string>
+    <string name="project_participate_in">我参与的</string>
+    <string name="project_my_create">我创建的</string>
+
+    <string name="user_info_title">用户信息</string>
+
+    <string name="examine_title">用户申请信息</string>
+    <string name="examine_accept">通过此申请</string>
+    <string name="examine_denied">拒绝此申请</string>
+    <string name="examine_already_accept">您已同意此申请</string>
+    <string name="examine_accept_title">确认同意申请</string>
+    <string name="examine_accept_confirm">您即将同意%s申请%s。随后，此申请将移交至更高级别的用户审核。继续吗？</string>
+    <string name="examine_denied_title">确认拒绝申请</string>
+    <string name="examine_denied_confirm">拒绝后，%s必须重新发出申请才能使用此角色。此操作不可撤销，继续吗？</string>
+    <string name="examine_accept_success">您已同意此申请</string>
+    <string name="examine_denied_success">您已拒绝此申请</string>
 </resources>

@@ -1,6 +1,8 @@
 package edu.neu.promotion.enties;
 
-public class AdminRoleGroupNode {
+import java.io.Serializable;
+
+public class AdminRoleGroupNode implements Serializable {
 
     public String adminRoleGroupId;
     public String roleId;

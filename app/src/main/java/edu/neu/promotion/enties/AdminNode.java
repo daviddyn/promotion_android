@@ -24,4 +24,8 @@ public class AdminNode implements Serializable {
     public boolean isStudent() {
         return "学生".equals(adminPosition);
     }
+
+    public boolean isFemale() {
+        return "女".equals(adminSex);
+    }
 }
