@@ -29,7 +29,7 @@ public class AdminRoleGroupEntityFiller implements EntityFiller<AdminRoleGroupNo
         nameView = rootView.findViewById(R.id.nameView);
         leftSubTextView = rootView.findViewById(R.id.leftSubTextView);
         chooseIcon = rootView.findViewById(R.id.chooseIcon);
-        stateTextView = rootView.findViewById(R.id.stateTextView);
+        stateTextView = rootView.findViewById(R.id.actionView);
         stateTextView.setTextColor(context.getResources().getColor(R.color.positive));
         stateTextView.setText(R.string.member_can_check);
         return rootView;

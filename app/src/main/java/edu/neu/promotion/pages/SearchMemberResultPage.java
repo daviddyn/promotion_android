@@ -3,7 +3,6 @@ package edu.neu.promotion.pages;
 import android.content.Intent;
 import android.util.TypedValue;
 import android.view.Gravity;
-import android.view.View;
 import android.widget.TextView;
 
 import com.davidsoft.utils.JsonNode;
@@ -15,7 +14,7 @@ import edu.neu.promotion.R;
 import edu.neu.promotion.ServerInterfaces;
 import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.StorageManager;
-import edu.neu.promotion.activities.ExamineUserInfoActivity;
+import edu.neu.promotion.activities.MemberExamineInfoActivity;
 import edu.neu.promotion.activities.MemberInfoActivity;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.enties.AdminNode;
@@ -83,8 +82,8 @@ public class SearchMemberResultPage extends TokenRunNetworkTaskPage {
                 startActivity(intent);
             }
             else {
-                Intent intent = new Intent(getContext(), ExamineUserInfoActivity.class);
-                intent.putExtra(ExamineUserInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
+                Intent intent = new Intent(getContext(), MemberExamineInfoActivity.class);
+                intent.putExtra(MemberExamineInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
                 operatingPosition = position;
                 startActivityForResult(intent, ACTIVITY_REQUEST_VIEW_EXAMINE);
             }
@@ -162,14 +161,14 @@ public class SearchMemberResultPage extends TokenRunNetworkTaskPage {
         switch (requestCode) {
             case ACTIVITY_REQUEST_VIEW_EXAMINE:
                 switch (resultCode) {
-                    case ExamineUserInfoActivity.RESULT_ACCEPT:
+                    case MemberExamineInfoActivity.RESULT_ACCEPT:
                         AdminRoleGroupNode node = resultMembers.get(operatingPosition);
-                        node.checkStateObj.dictionaryName = data.getStringExtra(ExamineUserInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
+                        node.checkStateObj.dictionaryName = data.getStringExtra(MemberExamineInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
                         node.canCheck = false;
                         listAdapter.notifyDataSetChanged();
                         notifyParent(RESULT_ACCEPT, node.adminId, node.checkStateObj.dictionaryName);
                         break;
-                    case ExamineUserInfoActivity.RESULT_DENIED:
+                    case MemberExamineInfoActivity.RESULT_DENIED:
                         notifyParent(RESULT_DENIED, resultMembers.remove(operatingPosition).adminId);
                         listAdapter.notifyDataSetChanged();
                         break;

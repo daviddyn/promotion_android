@@ -182,5 +182,11 @@
     <string name="project_all">全部计划</string>
     <string name="project_participate_in">我参与的</string>
     <string name="project_my_create">我创建的</string>
-    <string name="project_creator_and_time">%s</string>
+    <string name="project_creator_and_time">由 %s 创建于 %s</string>
+    <string name="project_create">创建计划</string>
+    <string name="project_edit">去编辑</string>
+    <string name="project_draft">草稿</string>
+    <string name="project_examine">审核中</string>
+    <string name="project_started">进行中</string>
+    <string name="project_finish">已结束</string>
 </resources>

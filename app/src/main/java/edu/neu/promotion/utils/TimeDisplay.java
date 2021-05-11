@@ -26,7 +26,7 @@ public class TimeDisplay {
         }
     }
 
-    public String showRelative(Context context, long timeMills) {
+    public static String showRelative(Context context, long timeMills, long baseTimeMills) {
         //规则：
         //1. 时间位于当前时间之后：
         //  1.1 当天时间，则显示“HH:mm”
@@ -41,11 +41,10 @@ public class TimeDisplay {
         //  2.6 当天的前2天以内，则显示“前天 HH:mm”
         //  2.7 当年以内，则显示“M月d日 HH:mm”
         //  2.8 更远时间，则显示“Y年M月d日 HH:mm”
-        long now = System.currentTimeMillis();
         initializeDateFormat(context);
-        if (timeMills > now) {
+        if (timeMills > baseTimeMills) {
             Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(now);
+            calendar.setTimeInMillis(baseTimeMills);
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
@@ -55,7 +54,7 @@ public class TimeDisplay {
             if (timeMills < tomorrow) {
                 return hourMinuteFormat.format(timeMills);
             }
-            calendar.setTimeInMillis(now);
+            calendar.setTimeInMillis(baseTimeMills);
             int currentYear = calendar.get(Calendar.YEAR);
             calendar.setTimeInMillis(timeMills);
             if (currentYear == calendar.get(Calendar.YEAR)) {
@@ -66,7 +65,7 @@ public class TimeDisplay {
             }
         }
         else {
-            long diff = now - timeMills;
+            long diff = baseTimeMills - timeMills;
             if (diff < 60000) {
                 return context.getString(R.string.time_moments_ago);
             }
@@ -77,7 +76,7 @@ public class TimeDisplay {
                 return context.getString(R.string.time_hours_ago, diff / 3600000);
             }
             Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(now);
+            calendar.setTimeInMillis(baseTimeMills);
             calendar.set(Calendar.HOUR_OF_DAY, 0);
             calendar.set(Calendar.MINUTE, 0);
             calendar.set(Calendar.SECOND, 0);
@@ -96,7 +95,7 @@ public class TimeDisplay {
             if (timeMills >= bar) {
                 return yesteryesterdayHourMinuteFormat.format(timeMills);
             }
-            calendar.setTimeInMillis(now);
+            calendar.setTimeInMillis(baseTimeMills);
             int currentYear = calendar.get(Calendar.YEAR);
             calendar.setTimeInMillis(timeMills);
             if (currentYear == calendar.get(Calendar.YEAR)) {

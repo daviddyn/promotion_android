@@ -5,6 +5,8 @@
     <dimen name="actionbar_height">48dp</dimen>
     <dimen name="actionbar_button">24dp</dimen>
     <dimen name="page_padding">32dp</dimen>
+    <dimen name="page_button_icon_dimen">18dp</dimen>
+    <dimen name="page_button_padding">6dp</dimen>
 
     <!-- 卡片 -->
     <dimen name="card_radius">10dp</dimen>

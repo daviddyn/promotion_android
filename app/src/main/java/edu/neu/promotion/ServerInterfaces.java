@@ -326,14 +326,18 @@ public final class ServerInterfaces {
             );
         }
 
-        public static ServerInvoker getProjectByPreset(String token, boolean isMyProject, boolean isMyJoinProject, boolean isNotEditState, int currentPage, int itemsPerPage) {
+        public static final String STATE_FILTER_ALL = "all";
+        public static final String STATE_FILTER_AVAILABLE = "available";
+        public static final String STATE_FILTER_NOT_DRAFT = "notDraft";
+
+        public static ServerInvoker getProjectByPreset(String token, boolean isMyProject, boolean isMyJoinProject, String stateFilter, int currentPage, int itemsPerPage) {
             HashMap<String, String> extraHeaders = new HashMap<>();
             extraHeaders.put("Token", token);
             ServerRequestNode requestNode = new ServerRequestNode();
             requestNode.params = JsonNode.createEmptyObject();
             requestNode.params.setField("isMyProject", isMyProject);
             requestNode.params.setField("isMyJoinProject", isMyJoinProject);
-            requestNode.params.setField("isNotEditState", isNotEditState);
+            requestNode.params.setField("stateFilter", stateFilter);
             requestNode.params.setField("currentPage", currentPage);
             requestNode.params.setField("showCount", itemsPerPage);
             return new ServerInvoker(

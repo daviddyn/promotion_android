@@ -8,9 +8,9 @@ import androidx.annotation.Nullable;
 import edu.neu.promotion.components.Page;
 import edu.neu.promotion.components.PageActivity;
 import edu.neu.promotion.components.RunNetworkTaskPage;
-import edu.neu.promotion.pages.ExamineUserInfoPage;
+import edu.neu.promotion.pages.MemberExamineInfoPage;
 
-public class ExamineUserInfoActivity extends PageActivity {
+public class MemberExamineInfoActivity extends PageActivity {
 
     public static final int RESULT_ACCEPT = RESULT_OK;
     public static final int RESULT_DENIED = RESULT_FIRST_USER + 10;
@@ -22,7 +22,7 @@ public class ExamineUserInfoActivity extends PageActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        setContentPage(new ExamineUserInfoPage(
+        setContentPage(new MemberExamineInfoPage(
                 this,
                 intent.getSerializableExtra(REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO)
         ));
@@ -37,12 +37,12 @@ public class ExamineUserInfoActivity extends PageActivity {
                 setResult(RESULT_NEED_FINISH);
                 finish();
                 break;
-            case ExamineUserInfoPage.RESULT_ACCEPT:
+            case MemberExamineInfoPage.RESULT_ACCEPT:
                 data = new Intent();
                 data.putExtra(RESULT_EXTRA_NEW_CHECK_STATE, ((String) args[0]));
                 setResult(RESULT_ACCEPT, data);
                 break;
-            case ExamineUserInfoPage.RESULT_DENIED:
+            case MemberExamineInfoPage.RESULT_DENIED:
                 setResult(RESULT_DENIED);
                 finish();
                 break;

@@ -137,7 +137,7 @@ public final class ServerInvoker implements Task {
 
     @Override
     public void onCancel() {
-        httpURLConnection.disconnect();
+        new Thread(() -> httpURLConnection.disconnect()).start();
     }
 
     @Override

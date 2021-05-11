@@ -168,7 +168,7 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
         groupNameText.setText(R.string.select_role_apply);
         groupNameText.setTextColor(getColor(R.color.primary));
         roleItemView.findViewById(R.id.roleNameText).setVisibility(View.GONE);
-        roleItemView.findViewById(R.id.stateTextView).setVisibility(View.GONE);
+        roleItemView.findViewById(R.id.actionView).setVisibility(View.GONE);
     }
 
     private void setItemRole(View roleItemView, int position) {
@@ -198,7 +198,7 @@ public class SelectRolePage extends TokenRunNetworkTaskPage {
             groupNameText.setText(role.groupObj.groupName);
             roleNameText.setText(role.roleObj.roleName);
         }
-        TextView stateTextView = roleItemView.findViewById(R.id.stateTextView);
+        TextView stateTextView = roleItemView.findViewById(R.id.actionView);
         switch (role.checkState) {
             case "admin_check_state_0":
                 stateTextView.setText(R.string.select_role_denied);

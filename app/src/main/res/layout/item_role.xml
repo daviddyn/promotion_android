@@ -44,7 +44,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/stateTextView"
+        android:id="@+id/actionView"
         android:textColor="@color/text_tertiary"
         android:textSize="14sp"
         android:layout_width="wrap_content"

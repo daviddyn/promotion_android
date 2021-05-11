@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="基本信息"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="计划名称"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:hint="请输入计划名称"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:background="@drawable/input"
+            android:textCursorDrawable="@drawable/input_cursor"
+            android:padding="@dimen/input_padding_outer"
+            android:textColor="@color/text_primary"
+            android:textColorHint="@color/split_bar"
+            android:textSize="@dimen/input_text_size"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="所在招生组"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_reminder_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/departmentEdit"
+            android:textColorHint="@color/split_bar"
+            android:padding="@dimen/input_padding_outer"
+            android:textSize="@dimen/input_text_size"
+            android:textColor="@color/text_secondary"
+            android:background="@drawable/ripple"
+            android:layout_marginTop="@dimen/navigate_content_elem_margin"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:drawableEndCompat="@drawable/ic_choose" />
+
+        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="出行人员"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/navigate_title_text_size"
+                android:layout_width="0dp"
+                android:layout_weight="1.0"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:background="@drawable/round_button_primary"
+                android:scaleType="center"
+                android:src="@drawable/ic_page_button_add"
+                android:padding="@dimen/page_button_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageButton
+                android:background="@drawable/round_button_critical"
+                android:scaleType="center"
+                android:src="@drawable/ic_page_button_remove"
+                android:padding="@dimen/page_button_padding"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

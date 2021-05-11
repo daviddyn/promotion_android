@@ -27,7 +27,7 @@ import edu.neu.promotion.R;
 import edu.neu.promotion.ServerInterfaces;
 import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.StorageManager;
-import edu.neu.promotion.activities.ExamineUserInfoActivity;
+import edu.neu.promotion.activities.MemberExamineInfoActivity;
 import edu.neu.promotion.activities.MemberInfoActivity;
 import edu.neu.promotion.activities.SearchMemberActivity;
 import edu.neu.promotion.activities.SearchMemberResultActivity;
@@ -115,8 +115,8 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         ));
         examineListView.setOnItemClickListener((parent, view, position, id) -> {
             AdminRoleGroupNode node = examineMembers.get(position);
-            Intent intent = new Intent(getContext(), ExamineUserInfoActivity.class);
-            intent.putExtra(ExamineUserInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
+            Intent intent = new Intent(getContext(), MemberExamineInfoActivity.class);
+            intent.putExtra(MemberExamineInfoActivity.REQUEST_EXTRA_ADMIN_ROLE_GROUP_INFO, node);
             operatingPosition = position;
             startActivityForResult(intent, ACTIVITY_REQUEST_VIEW_EXAMINE);
         });
@@ -300,13 +300,13 @@ public class MemberPage extends TokenRunNetworkTaskPage {
         switch (requestCode) {
             case ACTIVITY_REQUEST_VIEW_EXAMINE:
                 switch (resultCode) {
-                    case ExamineUserInfoActivity.RESULT_ACCEPT:
+                    case MemberExamineInfoActivity.RESULT_ACCEPT:
                         AdminRoleGroupNode node = examineMembers.get(operatingPosition);
-                        node.checkStateObj.dictionaryName = data.getStringExtra(ExamineUserInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
+                        node.checkStateObj.dictionaryName = data.getStringExtra(MemberExamineInfoActivity.RESULT_EXTRA_NEW_CHECK_STATE);
                         node.canCheck = false;
                         examineListAdapter.notifyDataSetChanged();
                         break;
-                    case ExamineUserInfoActivity.RESULT_DENIED:
+                    case MemberExamineInfoActivity.RESULT_DENIED:
                         examineMembers.remove(operatingPosition);
                         examineListAdapter.notifyDataSetChanged();
                         break;

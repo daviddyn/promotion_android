@@ -158,7 +158,7 @@
             <TextView
                 android:text="@string/view_role_examine_state_progress"
                 android:textColor="@color/text_primary"
-                android:textSize="@dimen/navigate_reminder_text_size"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

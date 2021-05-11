@@ -19,6 +19,9 @@ import com.davidsoft.utils.JsonNode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import edu.neu.promotion.StorageManager;
+import edu.neu.promotion.enties.AdminNode;
+import edu.neu.promotion.enties.AdminRoleNode;
 import edu.neu.promotion.fillers.ProjectEntityFiller;
 import edu.neu.promotion.R;
 import edu.neu.promotion.ServerInterfaces;
@@ -42,6 +45,8 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
     private static final int TASK_APPEND_IN_PROJECTS = 5;
     private static final int TASK_APPEND_CREATE_PROJECTS = 6;
 
+    private final ProjectEntityFiller.Tag projectEntityFillerTag;
+
     private ArrayList<ProjectNode> allProjects;
     private ArrayList<ProjectNode> inProjects;
     private ArrayList<ProjectNode> createProjects;
@@ -54,7 +59,7 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
     private EntityAdapter<ProjectNode> createListAdapter;
     private AnimationDrawable[] loadingAnimations;
     private ImageView[] loadingViews;
-    private TextView emptyTips[];
+    private TextView[] emptyTips;
     private FrameLayout[] pages;
     private int[] mainViewLoadState;
 
@@ -68,6 +73,9 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
 
     public ProjectPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
+        projectEntityFillerTag = new ProjectEntityFiller.Tag();
+        projectEntityFillerTag.currentIsGroupAdmin = "role_professor".equals(JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.ROLE_INFO), AdminRoleNode.class).roleId);
+        projectEntityFillerTag.currentAdminId = JsonNode.toObject(StorageManager.getJson(getContext(), StorageManager.USER_INFO), AdminNode.class).adminId;
     }
 
     @Override
@@ -81,33 +89,33 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
         allListView = new LazyLoadListView(getContext());
         allListView.setDividerHeight(1);
         allListView.setOnLoadListener(() -> runTask(
-                ServerInterfaces.Project.getProjectByPreset(getToken(), false, false, true, allProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                ServerInterfaces.Project.getProjectByPreset(getToken(), false, false, ServerInterfaces.Project.STATE_FILTER_NOT_DRAFT, allProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                 Integer.MAX_VALUE,
                 TASK_APPEND_ALL_PROJECTS
         ));
-        allListAdapter = new EntityAdapter<>(allProjects, ProjectEntityFiller.class);
+        allListAdapter = new EntityAdapter<>(allProjects, ProjectEntityFiller.class, projectEntityFillerTag);
         allListView.setAdapter(allListAdapter);
         allListView.setVisibility(View.GONE);
 
         inListView = new LazyLoadListView(getContext());
         inListView.setDividerHeight(1);
         inListView.setOnLoadListener(() -> runTask(
-                ServerInterfaces.Project.getProjectByPreset(getToken(), false, true, true, inProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                ServerInterfaces.Project.getProjectByPreset(getToken(), false, true, ServerInterfaces.Project.STATE_FILTER_NOT_DRAFT, inProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                 Integer.MAX_VALUE,
                 TASK_APPEND_IN_PROJECTS
         ));
-        inListAdapter = new EntityAdapter<>(inProjects, ProjectEntityFiller.class);
+        inListAdapter = new EntityAdapter<>(inProjects, ProjectEntityFiller.class, projectEntityFillerTag);
         inListView.setAdapter(inListAdapter);
         inListView.setVisibility(View.GONE);
 
         createListView = new LazyLoadListView(getContext());
         createListView.setDividerHeight(1);
         createListView.setOnLoadListener(() -> runTask(
-                ServerInterfaces.Project.getProjectByPreset(getToken(), true, false, false, createProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                ServerInterfaces.Project.getProjectByPreset(getToken(), true, false, ServerInterfaces.Project.STATE_FILTER_ALL, createProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                 Integer.MAX_VALUE,
                 TASK_APPEND_CREATE_PROJECTS
         ));
-        createListAdapter = new EntityAdapter<>(createProjects, ProjectEntityFiller.class);
+        createListAdapter = new EntityAdapter<>(createProjects, ProjectEntityFiller.class, projectEntityFillerTag);
         createListView.setAdapter(createListAdapter);
         createListView.setVisibility(View.GONE);
 
@@ -203,6 +211,7 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
 
         setTitle(R.string.project_title);
         addActionbarButton(getDrawable(R.drawable.ic_actionbar_search), R.string.search);
+        addActionbarButton(getDrawable(R.drawable.ic_actionbar_add), R.string.project_create);
     }
 
     private void onPageSelected(int position) {
@@ -241,21 +250,21 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
             switch (position) {
                 case 0:
                     runTask(
-                            ServerInterfaces.Project.getProjectByPreset(getToken(), false, false, true, allProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            ServerInterfaces.Project.getProjectByPreset(getToken(), false, false, ServerInterfaces.Project.STATE_FILTER_NOT_DRAFT, allProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                             Integer.MAX_VALUE,
                             TASK_GET_ALL_PROJECTS
                     );
                     break;
                 case 1:
                     runTask(
-                            ServerInterfaces.Project.getProjectByPreset(getToken(), false, true, true, inProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            ServerInterfaces.Project.getProjectByPreset(getToken(), false, true, ServerInterfaces.Project.STATE_FILTER_NOT_DRAFT, inProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                             Integer.MAX_VALUE,
                             TASK_GET_IN_PROJECTS
                     );
                     break;
                 case 2:
                     runTask(
-                            ServerInterfaces.Project.getProjectByPreset(getToken(), true, false, false, createProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
+                            ServerInterfaces.Project.getProjectByPreset(getToken(), true, false, ServerInterfaces.Project.STATE_FILTER_ALL, createProjects.size() / ITEMS_PER_LOAD, ITEMS_PER_LOAD),
                             Integer.MAX_VALUE,
                             TASK_GET_CREATE_PROJECTS
                     );
@@ -283,6 +292,7 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
                 }
                 else {
                     allListView.setVisibility(View.VISIBLE);
+                    projectEntityFillerTag.currentTimeMills = System.currentTimeMillis();
                     allListAdapter.notifyDataSetChanged();
                 }
                 break;
@@ -296,6 +306,7 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
                 }
                 else {
                     inListView.setVisibility(View.VISIBLE);
+                    projectEntityFillerTag.currentTimeMills = System.currentTimeMillis();
                     inListAdapter.notifyDataSetChanged();
                 }
                 break;
@@ -309,6 +320,7 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
                 }
                 else {
                     createListView.setVisibility(View.VISIBLE);
+                    projectEntityFillerTag.currentTimeMills = System.currentTimeMillis();
                     createListAdapter.notifyDataSetChanged();
                 }
                 break;

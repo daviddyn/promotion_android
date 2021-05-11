@@ -6,16 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:textColor="@color/on_primary"
+        android:textSize="12sp"
+        android:gravity="center" />
+
     <RelativeLayout
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:layout_weight="1.0"
         android:layout_width="0dp"
         android:layout_height="42dp">
 
         <TextView
+            android:layout_toStartOf="@+id/stateView"
             android:id="@+id/nameView"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/stateView"
+            android:layout_alignParentEnd="true"
+            android:maxLines="1"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
@@ -38,7 +60,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/stateTextView"
+        android:id="@+id/actionView"
         android:textColor="@color/text_tertiary"
         android:textSize="14sp"
         android:layout_width="wrap_content"

@@ -81,7 +81,7 @@ public class CreateRolePage extends TokenRunNetworkTaskPage {
         roleItemView.setOnClickListener(onRoleButtonClickListener);
         ImageView roleIconView = roleItemView.findViewById(R.id.roleIconView);
         roleItemView.findViewById(R.id.roleNameText).setVisibility(View.GONE);
-        roleItemView.findViewById(R.id.stateTextView).setVisibility(View.GONE);
+        roleItemView.findViewById(R.id.actionView).setVisibility(View.GONE);
         switch (role.roleId) {
             case "role_monitor":
                 roleIconView.setImageDrawable(getDrawable(R.drawable.ic_role_admin));

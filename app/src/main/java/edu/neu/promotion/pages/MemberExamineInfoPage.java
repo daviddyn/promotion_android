@@ -25,7 +25,7 @@ import edu.neu.promotion.enties.TimeListNode;
 import edu.neu.promotion.utils.CoupleNames;
 import edu.neu.promotion.views.ProgressTimelineView;
 
-public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
+public class MemberExamineInfoPage extends TokenRunNetworkTaskPage {
 
     public static final int RESULT_ACCEPT = 1;
     public static final int RESULT_DENIED = 2;
@@ -53,7 +53,7 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
 
     private boolean currentIsAccept;
 
-    public ExamineUserInfoPage(PageManager pageManager, Object... args) {
+    public MemberExamineInfoPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
         adminInfo = (AdminRoleGroupNode) args[0];
     }
@@ -106,7 +106,7 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
                 startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + adminInfo.adminObj.adminPhone)));
             }
         };
-        setContentView(R.layout.page_examine_user_info);
+        setContentView(R.layout.page_member_examine_info);
         ((TextView) findViewById(R.id.nameView)).setText(adminInfo.adminObj.adminName);
         TextView textView = findViewById(R.id.nameCardView);
         textView.setText(CoupleNames.getInstance(getResource()).getShortName(adminInfo.adminObj.adminName));
@@ -224,6 +224,7 @@ public class ExamineUserInfoPage extends TokenRunNetworkTaskPage {
         super.onTaskBegin(requestCode);
         switch (requestCode) {
             case TASK_GET_TIMELINE:
+                toLoadingState();
                 break;
             case TASK_ACCEPT:
             case TASK_DENIED:
