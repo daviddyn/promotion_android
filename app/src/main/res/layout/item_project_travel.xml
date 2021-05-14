@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/button_tertiary"
+    android:padding="12dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/firstLine"
+        android:layout_toStartOf="@+id/removeButton"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:src="@drawable/oval"
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_marginEnd="6dp"
+            app:tint="@color/text_primary" />
+
+        <TextView
+            android:id="@+id/dateView"
+            android:text="2021年5月14日"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/text_primary"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_width="1dp"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/cityView"
+            android:text="北京市"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contentView"
+        android:layout_below="@+id/firstLine"
+        android:layout_toStartOf="@+id/removeButton"
+        android:text="工作内容工作内容工作内容工作内容工作内容工作内容工作内容工作内容。"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="6dp"
+        android:textSize="12dp"
+        android:textColor="@color/text_secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/removeButton"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/round_button_critical"
+        android:src="@drawable/ic_page_button_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

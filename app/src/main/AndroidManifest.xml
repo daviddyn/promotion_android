@@ -38,6 +38,7 @@
         <activity android:name=".activities.SearchMemberActivity"
             android:theme="@style/FadeActivityTheme"/>
         <activity android:name=".activities.SearchMemberResultActivity" />
+        <activity android:name=".activities.EditProjectActivity" />
 
     </application>
 

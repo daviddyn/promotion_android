@@ -1,5 +1,6 @@
 package edu.neu.promotion.pages;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.neu.promotion.StorageManager;
+import edu.neu.promotion.activities.EditProjectActivity;
 import edu.neu.promotion.enties.AdminNode;
 import edu.neu.promotion.enties.AdminRoleNode;
 import edu.neu.promotion.fillers.ProjectEntityFiller;
@@ -44,6 +46,8 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
     private static final int TASK_APPEND_ALL_PROJECTS = 4;
     private static final int TASK_APPEND_IN_PROJECTS = 5;
     private static final int TASK_APPEND_CREATE_PROJECTS = 6;
+
+    private static final int ACTIVITY_REQUEST_CREATE_PROJECT = 1;
 
     private final ProjectEntityFiller.Tag projectEntityFillerTag;
 
@@ -343,4 +347,15 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
         }
     }
 
+    @Override
+    protected void onActionbarButtonClick(int position, View viewForAnchor) {
+        switch (position) {
+            case 0:
+                startActivityForResult(new Intent(getContext(), EditProjectActivity.class), ACTIVITY_REQUEST_CREATE_PROJECT);
+                break;
+            case 1:
+                //TODO: 搜索
+                break;
+        }
+    }
 }

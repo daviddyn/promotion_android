@@ -17,7 +17,6 @@ import edu.neu.promotion.ServerInvoker;
 import edu.neu.promotion.activities.SearchMemberResultActivity;
 import edu.neu.promotion.activities.SearchSelectItemActivity;
 import edu.neu.promotion.components.AlertDialog;
-import edu.neu.promotion.components.PageActivity;
 import edu.neu.promotion.components.PageManager;
 import edu.neu.promotion.components.RunNetworkTaskPage;
 import edu.neu.promotion.enties.AdminNode;
@@ -169,7 +168,7 @@ public class SearchMemberPage extends RunNetworkTaskPage {
                 startActivityForResult(intent, ACTIVITY_REQUEST_SHOW_SEARCH_RESULT);
             }
         };
-        setContentView(R.layout.page_search_memner);
+        setContentView(R.layout.page_search_member);
         nameEdit = findViewById(R.id.nameEdit);
         departmentEdit = findViewById(R.id.departmentEdit);
         departmentEdit.setOnClickListener(onClickListener);

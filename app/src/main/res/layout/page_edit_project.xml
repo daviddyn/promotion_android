@@ -69,7 +69,19 @@
             android:layout_height="wrap_content"
             app:drawableEndCompat="@drawable/ic_choose" />
 
+        <TextView
+            android:text="出行人员"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
+            android:visibility="gone"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp"
             android:layout_marginLeft="@dimen/page_padding"
@@ -103,8 +115,182 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/item_member" />
+            <include layout="@layout/item_member" />
+            <include layout="@layout/item_member" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple"
+                android:drawableStart="@drawable/ic_page_button_add"
+                android:text="添加出行人员"
+                android:textSize="16sp"
+                android:textColor="@color/primary"
+                android:padding="@dimen/input_padding_outer"
+                android:drawablePadding="@dimen/input_padding_outer" />
 
         </LinearLayout>
+
+        <TextView
+            android:text="行程安排"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/item_project_travel" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple"
+                android:drawableStart="@drawable/ic_page_button_add"
+                android:text="添加行程"
+                android:textSize="16sp"
+                android:textColor="@color/primary"
+                android:padding="@dimen/input_padding_outer"
+                android:drawablePadding="@dimen/input_padding_outer" />
+
+            <include layout="@layout/item_project_travel" />
+
+        </LinearLayout>
+
+        <TextView
+            android:text="行程预算"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TableLayout
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:text="交通费："
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:text="0"
+                    android:inputType="number"
+                    android:hint="@string/unspecified"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/input"
+                    android:textCursorDrawable="@drawable/input_cursor"
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_primary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="住宿费："
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:text="0"
+                    android:inputType="number"
+                    android:hint="@string/unspecified"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/input"
+                    android:textCursorDrawable="@drawable/input_cursor"
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_primary" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:text="其他费用："
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary" />
+
+                <EditText
+                    android:text="0"
+                    android:inputType="number"
+                    android:hint="@string/unspecified"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/input"
+                    android:textCursorDrawable="@drawable/input_cursor"
+                    android:padding="@dimen/input_padding_outer"
+                    android:textSize="16sp"
+                    android:textColorHint="@color/text_hint"
+                    android:textColor="@color/text_primary" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:text="其他补充说明"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/navigate_title_text_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:gravity="top"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="48dp"
+            android:layout_marginLeft="@dimen/page_padding"
+            android:layout_marginRight="@dimen/page_padding"
+            android:background="@drawable/input_area"
+            android:textCursorDrawable="@drawable/input_cursor"
+            android:padding="@dimen/input_padding_outer"
+            android:textColor="@color/text_secondary"
+            android:textColorHint="@color/split_bar"
+            android:textSize="16sp"
+            android:text="补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明补充说明"
+            android:minHeight="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
