@@ -282,6 +282,19 @@ public final class ServerInterfaces {
             );
         }
 
+        public static ServerInvoker getAllGroupByToken(String token) {
+            HashMap<String, String> extraHeaders = new HashMap<>();
+            extraHeaders.put("Token", token);
+            ServerRequestNode requestNode = new ServerRequestNode();
+            requestNode.params = JsonNode.createEmptyObject();
+            return new ServerInvoker(
+                    baseUrl + "/group/getAllGroupByToken",
+                    new HttpContentJsonProvider(JsonNode.valueOf(requestNode)),
+                    new HttpContentJsonReceiver(),
+                    extraHeaders
+            );
+        }
+
     }
 
     public static final class Dictionary {

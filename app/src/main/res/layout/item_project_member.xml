@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
+    android:background="@drawable/item_split_bar"
+    android:layout_marginBottom="@dimen/navigate_content_elem_margin"
     android:gravity="center_vertical"
     android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/iconView"
+    <TextView
+        android:id="@+id/nameCardView"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:textColor="@color/on_primary"
@@ -21,36 +23,15 @@
         android:layout_height="42dp">
 
         <TextView
-            android:layout_toStartOf="@+id/stateView"
             android:id="@+id/nameView"
-            android:singleLine="true"
-            android:ellipsize="end"
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/stateView"
-            android:layout_alignParentEnd="true"
-            android:maxLines="1"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
             android:id="@+id/leftSubTextView"
             android:layout_alignParentBottom="true"
-            android:textColor="@color/text_tertiary"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/rightSubTextView"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
             android:textColor="@color/text_tertiary"
             android:textSize="12sp"
             android:layout_width="wrap_content"
@@ -65,11 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ImageView
+    <ImageButton
+        android:id="@+id/removeButton"
         android:layout_marginStart="12dp"
-        android:id="@+id/chooseIcon"
-        android:scaleType="center"
-        android:src="@drawable/ic_choose"
+        android:background="@drawable/round_button_critical"
+        android:src="@drawable/ic_page_button_remove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

@@ -5,6 +5,7 @@ import edu.neu.promotion.components.PageManager;
 
 public class EditProjectPage extends TokenRunNetworkTaskPage {
 
+
     public EditProjectPage(PageManager pageManager, Object... args) {
         super(pageManager, args);
     }

@@ -125,20 +125,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <include layout="@layout/item_member" />
-            <include layout="@layout/item_member" />
-            <include layout="@layout/item_member" />
+            <include layout="@layout/item_project_member" />
+            <include layout="@layout/item_project_member" />
+            <include layout="@layout/item_project_member" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ripple"
-                android:drawableStart="@drawable/ic_page_button_add"
                 android:text="添加出行人员"
                 android:textSize="16sp"
                 android:textColor="@color/primary"
                 android:padding="@dimen/input_padding_outer"
-                android:drawablePadding="@dimen/input_padding_outer" />
+                android:drawablePadding="@dimen/input_padding_outer"
+                app:drawableStartCompat="@drawable/ic_page_button_add" />
 
         </LinearLayout>
 
@@ -162,19 +162,18 @@
             android:layout_height="wrap_content">
 
             <include layout="@layout/item_project_travel" />
+            <include layout="@layout/item_project_travel" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ripple"
-                android:drawableStart="@drawable/ic_page_button_add"
                 android:text="添加行程"
                 android:textSize="16sp"
                 android:textColor="@color/primary"
                 android:padding="@dimen/input_padding_outer"
-                android:drawablePadding="@dimen/input_padding_outer" />
-
-            <include layout="@layout/item_project_travel" />
+                android:drawablePadding="@dimen/input_padding_outer"
+                app:drawableStartCompat="@drawable/ic_page_button_add" />
 
         </LinearLayout>
 
@@ -214,7 +213,7 @@
                     android:padding="@dimen/input_padding_outer"
                     android:textSize="16sp"
                     android:textColorHint="@color/text_hint"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/text_secondary" />
 
             </TableRow>
 
@@ -236,7 +235,7 @@
                     android:padding="@dimen/input_padding_outer"
                     android:textSize="16sp"
                     android:textColorHint="@color/text_hint"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/text_secondary" />
 
             </TableRow>
 
@@ -258,7 +257,7 @@
                     android:padding="@dimen/input_padding_outer"
                     android:textSize="16sp"
                     android:textColorHint="@color/text_hint"
-                    android:textColor="@color/text_primary" />
+                    android:textColor="@color/text_secondary" />
 
             </TableRow>
 

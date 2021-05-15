@@ -351,10 +351,10 @@ public class ProjectPage extends TokenRunNetworkTaskPage {
     protected void onActionbarButtonClick(int position, View viewForAnchor) {
         switch (position) {
             case 0:
-                startActivityForResult(new Intent(getContext(), EditProjectActivity.class), ACTIVITY_REQUEST_CREATE_PROJECT);
+                //TODO: 搜索
                 break;
             case 1:
-                //TODO: 搜索
+                startActivityForResult(new Intent(getContext(), EditProjectActivity.class), ACTIVITY_REQUEST_CREATE_PROJECT);
                 break;
         }
     }
